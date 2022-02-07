@@ -1,0 +1,152 @@
+body {
+    background-color: rgb(2, 9, 85);
+}
+
+.heading {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(37, 188, 215);
+    overflow: hidden;
+
+
+}
+
+.pages {
+    float: left;
+    border-right: 1px solid white;
+}
+
+.active {
+    background-color: rgb(0, 184, 9);
+}
+
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px 14px;
+    text-decoration: none;
+  }
+
+li a:hover {
+    background-color: rgb(240, 52, 52);
+  }
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 100px;
+    text-align: center;
+    color: rgb(14, 13, 13);
+    background-color: rgb(37, 188, 215);
+    margin-left: 470px;
+    margin-right: 470px;
+    border: rgb(247, 240, 240) solid;
+    border-radius: 10px;
+}
+
+#orange_stack {
+    margin-left: 150px;
+}
+
+.intro_statement {
+    background-color: rgb(206, 192, 192);
+    width: 250px;
+    height: 250px;
+    font-size: x-large;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(26, 21, 21);
+    display: inline-block;
+    margin: auto;
+    border: black solid;   
+    vertical-align: 10px;
+    margin-left: 100px;
+    
+    text-align: center;
+    font-style: bold;
+    
+}
+
+.testimonials {
+    background-color: rgb(132, 193, 243);
+    display: inline-block;
+    margin-top: 50px;
+    margin-left: 30px;
+    width: 400px;
+    height: 600px;
+    border: rgb(252, 249, 249) solid 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+}
+
+h2{
+    text-align: center;
+}
+
+.test_photos {
+    width: 150px;
+    height: 150px;
+    border-radius: 100px;
+    border: black solid;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 85px;
+}
+
+.ROTM {
+    display: inline-block;
+    vertical-align: top;
+    width: 650px;
+    height: 600px;
+    background-color: rgb(132, 193, 243);
+    margin-left: 50px;
+    margin-top: 50px;
+    border: rgb(240, 234, 234) solid 5px;
+}
+
+.staff_pics{
+    border: black solid 2px;
+    margin-top: 20px;
+    margin-left: 7px;
+    width: 200px;
+    height: 200px;
+}
+
+.pick_names {
+    display: inline-block;
+}
+.staff_test {
+    margin-top: 5px;
+    width: 150px;
+    height: 20px;
+    display: inline-block;
+}
+
+#col_1 {
+    margin-left: 40px;
+}
+
+#col_2 {
+    margin-left: 90px;
+}
+
+#col_3 {
+    margin-left: 60px;
+}
+
+#col_4 {
+   margin-left: 55px; 
+}
+
+#col_5 {
+    margin-left: 55px; 
+ }
+
+#col_6 {
+    margin-left: 65px; 
+ }
