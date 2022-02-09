@@ -11,8 +11,6 @@ body {
     padding: 0;
     background-color: rgb(37, 188, 215);
     overflow: hidden;
-
-
 }
 
 .pages {
@@ -39,46 +37,44 @@ li a:hover {
   }
 
 h1 {
-    font-family: Arial, Helvetica, sans-serif;
-    margin-top: 100px;
+    font-family: 'New Rocker', cursive;
+    margin-top: 10%;
     text-align: center;
     color: rgb(14, 13, 13);
     background-color: rgb(37, 188, 215);
-    margin-left: 470px;
-    margin-right: 470px;
+    margin-left: 40%;
+    margin-right: 40%;
     border: rgb(247, 240, 240) solid;
     border-radius: 10px;
 }
 
 #orange_stack {
-    margin-left: 150px;
+    margin-left: 8%;
 }
 
 .intro_statement {
-    background-color: rgb(206, 192, 192);
-    width: 250px;
-    height: 250px;
+    background-color: rgb(101, 85, 160);
+    width: 30%;
+    height: 80%;
     font-size: x-large;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'New Rocker', cursive;
     color: rgb(26, 21, 21);
     display: inline-block;
-    margin: auto;
     border: black solid;   
-    vertical-align: 10px;
-    margin-left: 100px;
-    
+    vertical-align: 10%;
+    margin-left: 4.5%; 
     text-align: center;
     font-style: bold;
-    
+    margin-top: 1%;
 }
 
 .testimonials {
     background-color: rgb(132, 193, 243);
     display: inline-block;
-    margin-top: 50px;
-    margin-left: 30px;
-    width: 400px;
-    height: 600px;
+    margin-top: 5%;
+    margin-left: 3%;
+    width: 33%;
+    height: 60%;
     border: rgb(252, 249, 249) solid 5px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: large;
@@ -86,6 +82,7 @@ h1 {
 
 h2{
     text-align: center;
+    font-family: 'New Rocker', cursive;
 }
 
 .test_photos {
@@ -93,60 +90,94 @@ h2{
     height: 150px;
     border-radius: 100px;
     border: black solid;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    margin-left: 85px;
+    margin-top: 6%;
+    margin-bottom: 5%;
+    margin-left: 25%;
 }
 
-.ROTM {
+.test_quotes {
+    width: 90%;
+    height: 20%;
+    margin-top: 1%;
+    margin-right: 5%;
+    margin-bottom: 7.5%;
+}
+
+.staffgearpics {
     display: inline-block;
     vertical-align: top;
-    width: 650px;
-    height: 600px;
+    width: 55%;
+    height: 15%;
     background-color: rgb(132, 193, 243);
-    margin-left: 50px;
-    margin-top: 50px;
+    margin-left: 5%;
+    margin-top: 5%;
     border: rgb(240, 234, 234) solid 5px;
+}
+
+#staff_heading {
+    margin-bottom: 1.5%;
+    
 }
 
 .staff_pics{
     border: black solid 2px;
-    margin-top: 20px;
-    margin-left: 7px;
-    width: 200px;
-    height: 200px;
+    margin-top: 5%;
+    margin-left: 1.5%;
+    width: 30%;
+    height: 30%;
 }
 
 .pick_names {
     display: inline-block;
+    
 }
-.staff_test {
-    margin-top: 5px;
-    width: 150px;
-    height: 20px;
+
+.pick_names2 {
+    display: inline-block;
+    width: 100%;
+    height: 20%;
+    
+}
+.gear_name {
+    margin-top: 1%;
+    width: 30%;
+    height: 20%;
+    display: inline-block;
+}
+
+.gear_name2 {
+    margin-top: 1%;
+    width: 40%;
+    height: 20%;
     display: inline-block;
 }
 
 #col_1 {
-    margin-left: 40px;
+    text-align: left;
+    margin-left: 7%;
 }
 
 #col_2 {
-    margin-left: 90px;
+    text-align: center;
+    margin-left: -4%;
 }
 
 #col_3 {
-    margin-left: 60px;
+    text-align: right;
+    margin-left: -8%;
 }
 
 #col_4 {
-   margin-left: 55px; 
+    text-align: left;
+    margin-left: 8%;
 }
 
 #col_5 {
-    margin-left: 55px; 
+    text-align: center;
+    margin-left: -20%;
  }
 
 #col_6 {
-    margin-left: 65px; 
+    text-align: right;
+    margin-left: -20%;
  }
