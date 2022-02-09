@@ -128,19 +128,17 @@ h2{
 }
 
 .pick_names {
-    display: inline-block;
-    
+    display: flex;
+    justify-content: space-between;
 }
 
 .pick_names2 {
-    display: inline-block;
-    width: 100%;
-    height: 20%;
-    
+    display: flex;
+    justify-content: space-between;
 }
 .gear_name {
     margin-top: 1%;
-    width: 30%;
+    width: 100%;
     height: 20%;
     display: inline-block;
 }
@@ -153,31 +151,37 @@ h2{
 }
 
 #col_1 {
-    text-align: left;
-    margin-left: 7%;
+    margin-left: 6%;
 }
 
 #col_2 {
-    text-align: center;
-    margin-left: -4%;
+    margin-left: 15%;
 }
 
 #col_3 {
-    text-align: right;
-    margin-left: -8%;
+    margin-left: 12%;
 }
 
 #col_4 {
-    text-align: left;
-    margin-left: 8%;
+    margin-left: 10%;
 }
 
 #col_5 {
-    text-align: center;
-    margin-left: -20%;
- }
+    margin-left: 5%;
+}
 
 #col_6 {
-    text-align: right;
-    margin-left: -20%;
+    margin-left: 8%;
+}
+
+.sotw {
+    margin-top: 80px;
+    margin-bottom: 50px;
+}
+
+ .spotify {
+     display: block;
+     width: 500px;
+     margin-top: 5px;
+     margin-left: 375px;
  }
