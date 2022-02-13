@@ -75,9 +75,50 @@ ion-icon{
 .one-product:hover .guitar2,
 .one-product:hover .drums1,
 .one-product:hover .drums2,
-.one-product:hover .bass1,
+
 .one-product:hover .bass2{
     bottom: 50px;
     opacity: 1;
     padding: 10px;
 }
+.textOverImage{
+    position:relative;
+    width:300px;
+    height:300px;
+    float:left;
+    margin:25px;
+    background-size:100%;
+    background-position:center;
+    transition:0.5s;
+}
+  
+  .textOverImage:hover{
+    background-size:110%;
+  }
+  
+  .textOverImage:after{
+    position:absolute;
+    top:90%;
+    bottom:0;
+    left:0;
+    right:0;
+    white-space:pre-wrap;
+    overflow:hidden;
+    background-color:rgba(0,0,0,0.3);
+    color:#fff;
+    padding:20px;
+    content:attr(data-text);
+    transition:0.5s;
+  }
+  
+  .textOverImage:hover:after{
+    top:0;
+    padding:8px;
+    background-color:rgba(0,0,0,0.6);
+  }
+  
+  .textOverImage:first-line{
+    color:#fff;
+    font-weight:bold;
+    font-size:10px;
+  }
