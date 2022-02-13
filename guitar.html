@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="product_page.css">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <title>Guitars</title>
     </head>
     <body>
@@ -13,7 +15,27 @@
             <li class="pages active"><a href="#">Guitar</a></li>
             <li class="pages"><a href="bass.html">Bass</a></li>
             <li class="pages"><a href="drums.html">Drums</a></li>
-            <li class="pages"><a href="shopping_cart.html">Shopping Cart</a></li>
+            <li class="pages"><a href="shopping_cart.html"><ion-icon name="cart-outline"></ion-icon>Shopping Cart<span>0</span></a></li>
           </ul>
+
+          <div class="products-list">
+            <div class="one-product">
+                <img src="images/gibson.jpg" alt="guitar">
+                <h3>Gibson Guitar</h3>
+                <h3>$500.00</h3>
+                <a class="add-cart guitar1" href =#>
+                    <ion-icon name="bag-add-outline"></ion-icon>
+                </a>
+            </div>
+            <div class="one-product">
+                <img src="images/fender.jpg" alt="guitar">
+                <h3>Fender Guitar</h3>
+                <h3>$250.00</h3>
+                <a class="add-cart guitar2" href =#>
+                    <ion-icon name="bag-add-outline"></ion-icon>
+                </a>
+            </div>
+        </div>
+        <script src="cart.js"></script>
     </body>
 </html>
