@@ -1,7 +1,4 @@
-// full disclosure I used a youtube tutorial here: https://www.youtube.com/watch?v=B20Getj_Zk4
-// I did not copy any code.  I followed the video with a seperate project I made.  Then applied what I learned to make this file
-// I am not familiar with java script so I may have broken a few java script rules/conventions
-// By Ryan Winkelman
+// Code by Ryan Winkelman
 
 // declare variables
 var addGuitars = document.querySelectorAll('.add-cart-guitar') // add to cart buttons
