@@ -69,7 +69,6 @@ for (let i = 0; i < add.length; i++){
 function loadNumInCart(){
     //if page is refreshed this will display the count still
     let numItems = localStorage.getItem('numProductsInCart');
-    console.log(numItems);
     if ( numItems ){
         document.querySelector('.cart-count span').textContent = numItems;
     }
@@ -83,7 +82,7 @@ function numProductsInCart(product, decrease){
         localStorage.setItem('numProductsInCart', numItems - 1); //decrease value that is in local storage
         document.querySelector('.pages span').textContent = numItems - 1;
     }
-    else if (numItems != 1){
+    else if ( numItems ){
         localStorage.setItem('numProductsInCart', numItems + 1); //increment what in cart by one
         document.querySelector('.pages span').textContent = numItems + 1;
     }
