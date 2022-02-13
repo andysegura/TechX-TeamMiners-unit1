@@ -59,7 +59,9 @@ ion-icon{
     position: relative;
     overflow: hidden;
 }
-.add-cart {
+.add-cart-guitar,
+.add-cart-drums,
+.add-cart-bass{
     position: absolute;
     width: 100%;
     background-color: rgb(43, 223, 255);

@@ -4,10 +4,12 @@
 // By Ryan Winkelman
 
 // declare variables
-var add = document.querySelectorAll('.add-cart') // add to cart buttons
+var addGuitars = document.querySelectorAll('.add-cart-guitar') // add to cart buttons
+var addBass = document.querySelectorAll('.add-cart-bass')
+var addDrums = document.querySelectorAll('.add-cart-drums')
 var decreases = document.querySelectorAll('.decrease') // minus one quantity
 var increases = document.querySelectorAll('.increases') // plus one quantity
-var products = [ // hardcoded products in list to be able to access them
+var productsGuitar = [ // hardcoded products in list to be able to access them
     {
         name: 'Gibson',
         img: 'gibson.jpg',
@@ -23,7 +25,9 @@ var products = [ // hardcoded products in list to be able to access them
         tag: 'fender',
         price: 250,
         inCart: 0
-    },
+    }
+];
+var productsBass =[
     {
         name: 'Ibanez',
         img: 'ibanez.jpg',
@@ -36,10 +40,12 @@ var products = [ // hardcoded products in list to be able to access them
         name: 'Rougue',
         img: 'rougue.jpg',
         page: 'bass.html',
-        tag: 'gibson',
+        tag: 'rougue',
         price: 120,
         inCart: 0
-    },
+    }
+];
+var productsDrum =[
     {
         name: 'Yamaha',
         img: 'yamaha.jpg',
@@ -52,17 +58,31 @@ var products = [ // hardcoded products in list to be able to access them
         name: 'Sidekick',
         img: 'sidekick.jpg',
         page: 'drums.html',
-        tag: 'fender',
+        tag: 'sidekick',
         price: 250,
         inCart: 0
     },
 ];
 
-// event listener for add to cart button
-for (let i = 0; i < add.length; i++){
-    add[i].addEventListener('click', () =>{
-        numProductsInCart(products[i], false)
-        totalCost(products[i])
+// event listener for guitars
+for (let i = 0; i < addGuitars.length; i++){
+    addGuitars[i].addEventListener('click', () =>{
+        numProductsInCart(productsGuitar[i], false)
+        totalCost(productsGuitar[i])
+    })
+}
+// event listener for drums
+for (let i = 0; i < addDrums.length; i++){
+    addDrums[i].addEventListener('click', () =>{
+        numProductsInCart(productsDrum[i], false)
+        totalCost(productsDrum[i])
+    })
+}
+// event listener for bass
+for (let i = 0; i < addBass.length; i++){
+    addBass[i].addEventListener('click', () =>{
+        numProductsInCart(productsBass[i], false)
+        totalCost(productsBass[i])
     })
 }
 
@@ -90,7 +110,6 @@ function numProductsInCart(product, decrease){
         localStorage.setItem('numProductsInCart', 1); // there isn't anything in the cart. this will add the first item and initialize the variable
         document.querySelector('.pages span').textContent = 1;
     }
-    console.log(numItems)
     setItems(product);
 }
 
@@ -98,13 +117,17 @@ function numProductsInCart(product, decrease){
 function setItems(product){
     let cartItems = localStorage.getItem('productsInCart');
     cartItems = JSON.parse(cartItems); // will come as JSON object convert to js object
-    if (cartItems != null && cartItems[product.tag] == undefined){ 
+    if (cartItems != null){ 
         // already something in the cart
+        let productToAdd = product.tag;
         // if the current product we are trying to add is not in the cart yet
-        cartItems = {
-            ...cartItems,
-            [product.tag]: product
+        if ( cartItems[productToAdd] == undefined ){
+            cartItems = {
+                ...cartItems,
+                [productToAdd]: product
+            }
         }
+        cartItems[productToAdd];
     }
     else{
         // initialize array
@@ -138,31 +161,33 @@ function displayCart(){
     let cartItems = localStorage.getItem('productsInCart');
     cartItems = JSON.parse(cartItems);
     let cost = localStorage.getItem('totalCost');
-    let products = document.querySelector('.products-in-cart'); // this will say where we are writing to the html file
+    let shoppingCart = document.getElementById("shopping-cart-items"); // this will say where we are writing to the html file
 
     //here is where the fun begins! lol
-    if (cartItems && products){ //if these aren't null
-        products.innerHTML = ''; // initialized to empty string
+    if ( cartItems && shoppingCart ){ //if these aren't null
+        shoppingCart.innerHTML = ``; // initialized to empty string
         Object.values(cartItems).map(item => {
-            products += `
+            shoppingCart.innerHTML += `
             <div class="product">
-                <ion-icon name="close-circle"></ion-icon>
-                <a href="index.html"><img = src="images/${item.img}"></a>
+                <div id="remove">
+                    <ion-icon name="close-circle"></ion-icon>
+                </div>
+                <a href="${item.page}"><img = src="images/${item.img}"></a>
                 <span>${item.name}</span>
 
             </div>
-            <div class="price">$${item.price}.00</div>
-            <div class="quantity">
+            <div class="product-price">$${item.price}.00</div>
+            <div class="product-quantity">
                 <ion-icon class="decrease" name="remove-circle-outline"></ion-icon>
                 <span>${item.inCart}</span>
                 <ion-icon class="increase" name="add-circle-outline"></ion-icon>
             </div >
-            <div class="total">
+            <div class="product-total">
                 <span>$${item.inCart * item.price}</span>
             </div>
             `;
         });
-        products.innerHTML += `
+        shoppingCart.innerHTML += `
             <div class="basketTotalContainer">
                 <h4 class= "basketTotalTitle">
                     Basket Total
@@ -170,7 +195,7 @@ function displayCart(){
                 <h4 class="basketTotal">
                     $${cost}.00
                 </h4>
-        `
+        `;
     }
     // call event listeners
     changeQuantity(); //if the quantity of each item needs to be incremented
@@ -211,14 +236,16 @@ function changeQuantity(){
 }
 // use remove button in cart
 function removeItems(){
-    let deleteButton = document.querySelectorAll('.product ion-icon');
+    console.log('in function')
+    let deleteButton = document.getElementById('remove');
     let numProducts = localStorage.getItem('numProductsInCart');
     let cost = localStorage.getItem('totalCost');
     let cartItems = localStorage.getItem('productsInCart');
     let productName;
-
+    console.log(deleteButton.length)
     for (let i = 0; i < deleteButton.length; i++){
         deleteButton[i].addEventListener('click', () =>{
+            console.log('remove item')
             productName = deleteButton[i].parentElement.textContent.toLocaleLowerCase().replace(/ /g, '').trim();
             // remove item
             localStorage.setItem('numProductsInCart', numProducts - cartItems[productName].inCart);
