@@ -4,10 +4,10 @@
 // By Ryan Winkelman
 
 // declare variables
-let add = document.querySelectorAll('.add-cart') // add to cart buttons
-let decreases = document.querySelectorAll('.decrease') // minus one quantity
-let increases = document.querySelectorAll('.increases') // plus one quantity
-let products = [ // hardcoded products in list to be able to access them
+var add = document.querySelectorAll('.add-cart') // add to cart buttons
+var decreases = document.querySelectorAll('.decrease') // minus one quantity
+var increases = document.querySelectorAll('.increases') // plus one quantity
+var products = [ // hardcoded products in list to be able to access them
     {
         name: 'Gibson',
         img: 'gibson.jpg',
@@ -70,7 +70,7 @@ function loadNumInCart(){
     //if page is refreshed this will display the count still
     let numItems = localStorage.getItem('numProductsInCart');
     if ( numItems ){
-        document.querySelector('.cart-count span').textContent = numItems;
+        document.getElementById("num").textContent = numItems;
     }
 }
 
@@ -143,7 +143,7 @@ function displayCart(){
     //here is where the fun begins! lol
     if (cartItems && products){ //if these aren't null
         products.innerHTML = ''; // initialized to empty string
-        Object.values(cartItems).map(product => {
+        Object.values(cartItems).map(item => {
             products += `
             <div class="product">
                 <ion-icon name="close-circle"></ion-icon>
@@ -162,13 +162,13 @@ function displayCart(){
             </div>
             `;
         });
-        productContainer.innerHTML += `
+        products.innerHTML += `
             <div class="basketTotalContainer">
                 <h4 class= "basketTotalTitle">
                     Basket Total
                 </h4>
                 <h4 class="basketTotal">
-                    $${cartCost}.00
+                    $${cost}.00
                 </h4>
         `
     }
