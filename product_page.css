@@ -47,6 +47,7 @@ ion-icon{
 }
 .products-list{
     display: flex;
+    flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
     margin-top: 50px;
@@ -54,8 +55,8 @@ ion-icon{
 }
 
 .one-product{
-    margin-right: 20px;
-    margin-left: 20px;
+    margin-right: 25px;
+    margin-left: 25px;
     position: relative;
     overflow: hidden;
 }
