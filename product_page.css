@@ -35,4 +35,48 @@ li a {
 
 li a:hover {
     background-color: rgb(240, 52, 52);
-  }
+}
+h3{
+    color: white;
+}
+span {
+    padding-left: 5px;
+}
+ion-icon{
+    padding-right: 5px;
+}
+.products-list{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    padding-bottom: 100px;
+}
+
+.one-product{
+    margin-right: 20px;
+    margin-left: 20px;
+    position: relative;
+    overflow: hidden;
+}
+.add-cart-guitar,
+.add-cart-drums,
+.add-cart-bass{
+    position: absolute;
+    width: 100%;
+    background-color: rgb(43, 223, 255);
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+    cursor: pointer;
+    text-align: center;
+}
+.one-product:hover .guitar1,
+.one-product:hover .guitar2,
+.one-product:hover .drums1,
+.one-product:hover .drums2,
+.one-product:hover .bass1,
+.one-product:hover .bass2{
+    bottom: 50px;
+    opacity: 1;
+    padding: 10px;
+}
