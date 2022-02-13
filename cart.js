@@ -61,7 +61,7 @@ let products = [ // hardcoded products in list to be able to access them
 // event listener for add to cart button
 for (let i = 0; i < add.length; i++){
     add[i].addEventListener('click', () =>{
-        numProductsInCart(products[i], 1)
+        numProductsInCart(products[i], false)
         totalCost(products[i])
     })
 }
@@ -69,8 +69,9 @@ for (let i = 0; i < add.length; i++){
 function loadNumInCart(){
     //if page is refreshed this will display the count still
     let numItems = localStorage.getItem('numProductsInCart');
-    if (numItems != null){
-        document.querySelector('.pages span').textContent = numItems;
+    console.log(numItems);
+    if ( numItems ){
+        document.querySelector('.cart-count span').textContent = numItems;
     }
 }
 
@@ -80,16 +81,17 @@ function numProductsInCart(product, decrease){
     numItems = parseInt(numItems); //will come as string change to int
     if(decrease){
         localStorage.setItem('numProductsInCart', numItems - 1); //decrease value that is in local storage
-        loadNumInCart();
+        document.querySelector('.pages span').textContent = numItems - 1;
     }
     else if (numItems != 1){
         localStorage.setItem('numProductsInCart', numItems + 1); //increment what in cart by one
-        loadNumInCart();
+        document.querySelector('.pages span').textContent = numItems + 1;
     }
     else{
         localStorage.setItem('numProductsInCart', 1); // there isn't anything in the cart. this will add the first item and initialize the variable
-        loadNumInCart();
+        document.querySelector('.pages span').textContent = 1;
     }
+    console.log(numItems)
     setItems(product);
 }
 
@@ -118,7 +120,7 @@ function setItems(product){
 
 // increase the total cost of the cart
 function totalCost(product, decrease){
-    let cost = localStorage.get('totalCost');
+    let cost = localStorage.getItem('totalCost');
     if (decrease){ // removing item from cart
         cost = parseFloat(cost); // since it comes as a string
         localStorage.setItem('totalCost', cost - product.price);
