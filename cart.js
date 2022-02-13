@@ -254,5 +254,7 @@ function removeItems(){
         });
     }
 }
+
+// this will load the number in the cart after each page is loaded and display the cart if we are on that pages
 loadNumInCart();
 displayCart();
