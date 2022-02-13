@@ -169,9 +169,7 @@ function displayCart(){
         Object.values(cartItems).map(item => {
             shoppingCart.innerHTML += `
             <div class="product">
-                <div id="remove">
-                    <ion-icon name="close-circle"></ion-icon>
-                </div>
+                <ion-icon name="close-circle"></ion-icon>
                 <a href="${item.page}"><img = src="images/${item.img}"></a>
                 <span>${item.name}</span>
 
@@ -237,10 +235,11 @@ function changeQuantity(){
 // use remove button in cart
 function removeItems(){
     console.log('in function')
-    let deleteButton = document.getElementById('remove');
+    let deleteButton = document.querySelectorAll('.product ion-icon');
     let numProducts = localStorage.getItem('numProductsInCart');
     let cost = localStorage.getItem('totalCost');
     let cartItems = localStorage.getItem('productsInCart');
+    cartItems = JSON.parse(cartItems);
     let productName;
     console.log(deleteButton.length)
     for (let i = 0; i < deleteButton.length; i++){
