@@ -116,6 +116,16 @@ ion-icon{
     padding:8px;
     background-color:rgba(0,0,0,0.6);
   }
+    .textOverImage:hover .guitar1,
+    .textOverImage:hover .guitar2,
+    .textOverImage:hover .drums1,
+    .textOverImage:hover .drums2,
+    .textOverImage:hover .bass2,
+    .textOverImage:hover .bass2{
+        bottom: 50px;
+        opacity: 1;
+        padding: 10px;
+    }
   
   .textOverImage:first-line{
     color:#fff;
