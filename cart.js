@@ -71,10 +71,10 @@ var productsDrum =[
 ];
 var productsElectronics =[
     {
-        name: 'Sunn Solarus Head',
+        name: 'Sunn',
         img: 'sunn_head.jpg',
         page: 'electronics.html',
-        tag: 'sunnhead',
+        tag: 'sunn',
         price: 250,
         inCart: 0
     },
@@ -273,14 +273,12 @@ function changeQuantity(){
 }
 // use remove button in cart
 function removeItems(){
-    console.log('in function')
     let deleteButton = document.querySelectorAll('.product ion-icon');
     let numProducts = localStorage.getItem('numProductsInCart');
     let cost = localStorage.getItem('totalCost');
     let cartItems = localStorage.getItem('productsInCart');
     cartItems = JSON.parse(cartItems);
     let productName;
-    console.log(deleteButton.length)
     for (let i = 0; i < deleteButton.length; i++){
         deleteButton[i].addEventListener('click', () =>{
             console.log('remove item')
