@@ -74,16 +74,16 @@ ion-icon{
     cursor: pointer;
     text-align: center;
 }
-    .textOverImage:hover .guitar1,
-    .textOverImage:hover .guitar2,
-    .textOverImage:hover .guitar3,
-    .textOverImage:hover .drums1,
-    .textOverImage:hover .drums2,
-    .textOverImage:hover .bass1,
-    .textOverImage:hover .bass2,
-    .textOverImage:hover .electronics1,
-    .textOverImage:hover .electronics2,
-    .textOverImage:hover .electronics3{
+.textOverImage:hover .guitar1,
+.textOverImage:hover .guitar2,
+.textOverImage:hover .guitar3,
+.textOverImage:hover .drums1,
+.textOverImage:hover .drums2,
+.textOverImage:hover .bass1,
+.textOverImage:hover .bass2,
+.textOverImage:hover .electronics1,
+.textOverImage:hover .electronics2,
+.textOverImage:hover .electronics3{
     bottom: 50px;
     opacity: 1;
     padding: 10px;
@@ -99,11 +99,11 @@ ion-icon{
     transition:0.5s;
 }
   
-  .textOverImage:hover{
+.textOverImage:hover{
     background-size:110%;
-  }
+}
   
-  .textOverImage:after{
+.textOverImage:after{
     position:absolute;
     top:90%;
     bottom:0;
@@ -118,31 +118,31 @@ ion-icon{
     padding:20px;
     content:attr(data-text);
     transition:0.5s;
-  }
+}
   
-  .textOverImage:hover:after{
+.textOverImage:hover:after{
     top:0;
     padding:8px;
     background-color:rgba(0,0,0,0.6);
-  }
-    .textOverImage:hover .guitar1,
-    .textOverImage:hover .guitar2,
-    .textOverImage:hover .guitar3,
-    .textOverImage:hover .drums1,
-    .textOverImage:hover .drums2,
-    .textOverImage:hover .bass1,
-    .textOverImage:hover .bass2,
-    .textOverImage:hover .electronics1,
-    .textOverImage:hover .electronics2,
-    .textOverImage:hover .electronics3{
-        position: absolute;
-        bottom: 0px;
-        opacity: 1;
-        padding: 10px;
-    }
+}
+.textOverImage:hover .guitar1,
+.textOverImage:hover .guitar2,
+.textOverImage:hover .guitar3,
+.textOverImage:hover .drums1,
+.textOverImage:hover .drums2,
+.textOverImage:hover .bass1,
+.textOverImage:hover .bass2,
+.textOverImage:hover .electronics1,
+.textOverImage:hover .electronics2,
+.textOverImage:hover .electronics3{
+    position: absolute;
+    bottom: 0px;
+    opacity: 1;
+    padding: 10px;
+}
   
-  .textOverImage:first-line{
+.textOverImage:first-line{
     color:#fff;
     font-weight:bold;
     font-size:10px;
-  }
+}
