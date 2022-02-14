@@ -4,6 +4,7 @@
 var addGuitars = document.querySelectorAll('.add-cart-guitar') // add to cart buttons
 var addBass = document.querySelectorAll('.add-cart-bass')
 var addDrums = document.querySelectorAll('.add-cart-drums')
+var addElectronics = document.querySelectorAll('.add-cart-electronics')
 var decreases = document.querySelectorAll('.decrease') // minus one quantity
 var increases = document.querySelectorAll('.increases') // plus one quantity
 var productsGuitar = [ // hardcoded products in list to be able to access them
@@ -21,6 +22,14 @@ var productsGuitar = [ // hardcoded products in list to be able to access them
         page: 'guitar.html',
         tag: 'fender',
         price: 250,
+        inCart: 0
+    },
+    {
+        name: 'Mariposa',
+        img: 'mariposa.jpg',
+        page: 'guitar.html',
+        tag: 'mariposa',
+        price: 500,
         inCart: 0
     }
 ];
@@ -52,13 +61,39 @@ var productsDrum =[
         inCart: 0
     },
     {
-        name: 'Sidekick',
-        img: 'sidekick.jpg',
+        name: 'Peace',
+        img: 'peacedrumset.jpg',
         page: 'drums.html',
-        tag: 'sidekick',
+        tag: 'peace',
+        price: 250,
+        inCart: 0
+    }
+];
+var Electronics =[
+    {
+        name: 'Empress',
+        img: 'empress delay.jpg',
+        page: 'electronics.html',
+        tag: 'empress',
+        price: 220,
+        inCart: 0
+    },
+    {
+        name: 'Sunn Head',
+        img: 'sunn head.jpg',
+        page: 'electronics.html',
+        tag: 'sunnhead',
         price: 250,
         inCart: 0
     },
+    {
+        name: 'Strymon',
+        img: 'strymon.jpg',
+        page: 'electronics.html',
+        tag: 'strymon',
+        price: 150,
+        inCart: 0
+    }
 ];
 
 // event listener for guitars
@@ -80,6 +115,13 @@ for (let i = 0; i < addBass.length; i++){
     addBass[i].addEventListener('click', () =>{
         numProductsInCart(productsBass[i], false)
         totalCost(productsBass[i])
+    })
+}
+// event listener for electronics
+for (let i = 0; i < addElectronics.length; i++){
+    addElectronics[i].addEventListener('click', () =>{
+        numProductsInCart(productsElectronics[i], false)
+        totalCost(productsElectronics[i])
     })
 }
 

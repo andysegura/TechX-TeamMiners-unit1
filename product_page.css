@@ -75,6 +75,7 @@ ion-icon{
 }
 .one-product:hover .guitar1,
 .one-product:hover .guitar2,
+.one-product:hover .guitar3,
 .one-product:hover .drums1,
 .one-product:hover .drums2,
 .one-product:hover .bass2{
@@ -121,6 +122,7 @@ ion-icon{
   }
     .textOverImage:hover .guitar1,
     .textOverImage:hover .guitar2,
+    .textOverImage:hover .guitar3,
     .textOverImage:hover .drums1,
     .textOverImage:hover .drums2,
     .textOverImage:hover .bass1,
