@@ -69,7 +69,7 @@ var productsDrum =[
         inCart: 0
     }
 ];
-var Electronics =[
+var productsElectronics =[
     {
         name: 'Sunn Solarus Head',
         img: 'sunn_head.jpg',
