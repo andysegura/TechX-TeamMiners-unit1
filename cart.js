@@ -71,7 +71,7 @@ var productsDrum =[
 ];
 var productsElectronics =[
     {
-        name: 'Sunn Solarus Head',
+        name: 'Sunn Head',
         img: 'sunn_head.jpg',
         page: 'electronics.html',
         tag: 'sunnhead',
