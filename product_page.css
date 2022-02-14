@@ -62,7 +62,8 @@ ion-icon{
 }
 .add-cart-guitar,
 .add-cart-drums,
-.add-cart-bass{
+.add-cart-bass,
+.add-cart-electronics{
     position: absolute;
     display: block;
     z-index: 2;
@@ -73,12 +74,16 @@ ion-icon{
     cursor: pointer;
     text-align: center;
 }
-.one-product:hover .guitar1,
-.one-product:hover .guitar2,
-.one-product:hover .guitar3,
-.one-product:hover .drums1,
-.one-product:hover .drums2,
-.one-product:hover .bass2{
+    .textOverImage:hover .guitar1,
+    .textOverImage:hover .guitar2,
+    .textOverImage:hover .guitar3,
+    .textOverImage:hover .drums1,
+    .textOverImage:hover .drums2,
+    .textOverImage:hover .bass1,
+    .textOverImage:hover .bass2,
+    .textOverImage:hover .electronics1,
+    .textOverImage:hover .electronics2,
+    .textOverImage:hover .electronics3{
     bottom: 50px;
     opacity: 1;
     padding: 10px;
@@ -126,7 +131,10 @@ ion-icon{
     .textOverImage:hover .drums1,
     .textOverImage:hover .drums2,
     .textOverImage:hover .bass1,
-    .textOverImage:hover .bass2{
+    .textOverImage:hover .bass2,
+    .textOverImage:hover .electronics1,
+    .textOverImage:hover .electronics2,
+    .textOverImage:hover .electronics3{
         position: absolute;
         bottom: 0px;
         opacity: 1;

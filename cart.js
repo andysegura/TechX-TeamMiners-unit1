@@ -71,6 +71,14 @@ var productsDrum =[
 ];
 var Electronics =[
     {
+        name: 'Sunn Solarus Head',
+        img: 'sunn_head.jpg',
+        page: 'electronics.html',
+        tag: 'sunnhead',
+        price: 250,
+        inCart: 0
+    },
+    {
         name: 'Empress',
         img: 'empress delay.jpg',
         page: 'electronics.html',
@@ -79,16 +87,8 @@ var Electronics =[
         inCart: 0
     },
     {
-        name: 'Sunn Head',
-        img: 'sunn head.jpg',
-        page: 'electronics.html',
-        tag: 'sunnhead',
-        price: 250,
-        inCart: 0
-    },
-    {
         name: 'Strymon',
-        img: 'strymon.jpg',
+        img: 'strymon.jpeg',
         page: 'electronics.html',
         tag: 'strymon',
         price: 150,
