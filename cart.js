@@ -71,7 +71,11 @@ var productsDrum =[
 ];
 var productsElectronics =[
     {
+<<<<<<< HEAD
+        name: 'Sunn Head',
+=======
         name: 'Sunn',
+>>>>>>> 67b73ffb5640f3df1871327093e073b9c1e977b2
         img: 'sunn_head.jpg',
         page: 'electronics.html',
         tag: 'sunn',
