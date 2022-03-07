@@ -1,5 +1,5 @@
 class Item:
-    def __init__(self, name = None, price= 0, serial_number= -1, stock = -1, description = '', category = 'Item'):
+    def __init__(self, name = None, price= 0, serial_number= -1, stock = 0, description = '', category = 'item'):
         self.name = name
         self.price = price
         self.serialNumber = serial_number

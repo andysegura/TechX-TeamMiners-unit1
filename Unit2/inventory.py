@@ -2,6 +2,7 @@ from multiprocessing.sharedctypes import Value
 import pandas as pd
 from collections import defaultdict
 from item import *
+from factory import factory
 
 class Inventory:
     def __init__(self, csv_string):
@@ -33,12 +34,6 @@ class Inventory:
 
     def _build_inventory(self, csv_df):
         inventory = {}
-        factory = {
-            'guitar': Guitar,
-            'drums': Drums,
-            'bass': Bass,
-            'electronics': Electronic
-        }
         for i in csv_df.index:
             try:
                 inventory[csv_df['Serial'][i]] = factory[csv_df['Category'][i]](csv_df['Name'][i], csv_df['Price'][i], csv_df['Serial'][i], csv_df['Stock'][i], csv_df['Description'][i], csv_df['Category'][i])
