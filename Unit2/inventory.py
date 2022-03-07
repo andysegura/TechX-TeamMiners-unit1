@@ -1,40 +1,45 @@
 import pandas as pd
-from collections import defaultdict
+import item
 
 class Inventory:
     def __init__(self):
-        self.guitar = defaultdict()
-        self.bass = defaultdict()
-        self.drums = defaultdict()
-        self.electronics = defaultdict()
+        self.guitar = {}
+        self.bass = {}
+        self.drums = {}
+        self.electronics = {}
+        self.store_inventory = {'guitar': self.guitar, 'bass': self.bass,
+                                'drums': self.drums, 'electronics': self.electronics}
         self.data = pd.read_csv("instrument data.csv")
         self.stock_inventory()
 
     def add_new_item(self, instrument):
-        dictionary = self.instrument_list(instrument.type)
-        dictionary[instrument.name] = instrument
+        department_inventory = self.get_department_inventory(instrument.type)
+        if instrument.get_name() in department_inventory:
+            raise ValueError("Item name already in stock, please change quantity")
+        department_inventory[instrument.get_name()] = instrument
 
     def update_quantity(self, category, name, quantity):
-        dictionary = self.instrument_list(category)
-        if name not in dictionary:
+        department_inventory = self.get_department_inventory(category)
+        if name not in department_inventory:
             raise ValueError("name not in inventory")
-        if quantity > dictionary[name].quantity or quantity < (dictionary[name].quantity * -1):
+        if quantity > department_inventory[name].quantity or quantity < (department_inventory[name].quantity * -1):
             raise ValueError("invalid quantity change")
-        dictionary[name].quantity += quantity
+        department_inventory[name].set_quantity(quantity)
 
     def change_price(self, name, category, new_price):
-        dictionary = self.instrument_list(category)
-        if name not in dictionary:
+        department_inventory = self.get_department_inventory(category)
+        if name not in department_inventory:
             raise ValueError("name not in inventory")
         if new_price < 0 or new_price > 15000:
             raise ValueError("invalid price")
-        dictionary[name].price = new_price
+        department_inventory[name].price = new_price
 
-    def check_inventory(self, category, name):
-        dictionary = self.instrument_list(category)
-        if name not in dictionary:
+    def get_instrument(self, department_inventory, name):
+        if type(department_inventory) != dict:
+            raise TypeError("Department inventory has to be a department_inventory")
+        if name not in department_inventory:
             raise ValueError("name not in inventory")
-        return dictionary[name].quantity
+        return department_inventory[name]
 
     def stock_inventory(self):
         for row in range(self.data.shape[0]):
@@ -42,30 +47,13 @@ class Inventory:
             for column in range(6):
                 item_data.append(self.data.iloc[row][column])
             new_item = Item(item_data)
-            dictionary = self.instrument_list(new_item.get_type())
-            dictionary[new_item.get_name()] = new_item
+            department_inventory = self.get_department_inventory(new_item.get_type())
+            department_inventory[new_item.get_name()] = new_item
 
-    def instrument_list(self, category):
-        if category not in ['guitar', 'bass', 'drums', 'electronics']:
-            raise TypeError("no inventory items of that type")
-        if category == 'guitar':
-            return self.guitar
-        elif category == 'bass':
-            return self.bass
-        elif category == 'drums':
-            return self.drums
-        elif category == 'electronics':
-            return self.electronics
-
-class Item:
-    def __init__(self, data):
-        self.type = data[0]
-        self.name = data[1]
-        self.price = 100
-    def get_name(self):
-        return self.name
-    def get_type(self):
-        return self.type
-
-
+    def get_department_inventory(self, category):
+        if type(category) != str:
+            raise TypeError("category has to be a string")
+        if category not in self.store_inventory:
+            raise ValueError("category not found")
+        return self.store_inventory[category]
 
