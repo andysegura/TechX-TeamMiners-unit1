@@ -22,7 +22,7 @@ class Inventory:
         department_inventory = self.get_department_inventory(category)
         if name not in department_inventory:
             raise ValueError("name not in inventory")
-        if quantity > department_inventory[name].quantity or quantity < (department_inventory[name].quantity * -1):
+        if quantity < 0  or quantity > 250:
             raise ValueError("invalid quantity change")
         department_inventory[name].set_quantity(quantity)
 
@@ -36,7 +36,7 @@ class Inventory:
 
     def get_instrument(self, department_inventory, name):
         if type(department_inventory) != dict:
-            raise TypeError("Department inventory has to be a department_inventory")
+            raise TypeError("department_inventory has to be a dictionary")
         if name not in department_inventory:
             raise ValueError("name not in inventory")
         return department_inventory[name]
