@@ -23,11 +23,11 @@ class Inventory:
         self.inventory[instrument.get_model_number()] = instrument
         self.department_inventory[instrument.get_category()][instrument.get_model_number()] = instrument
 
-    def check_quantity(self, model_number):
+    def get_quantity(self, model_number):
         self._check_model_number(model_number)
         return self.inventory[model_number].get_quantity()
 
-    def change_quantity(self, model_number, new_quantity):
+    def set_quantity(self, model_number, new_quantity):
         self._check_model_number(model_number)
         if type(new_quantity) != int:
             raise ValueError("new_quantity needs to be an int")
@@ -38,6 +38,12 @@ class Inventory:
     def get_price(self, model_number):
         self._check_model_number(model_number)
         return self.inventory[model_number].get_price()
+
+    def set_price(self, model_number, new_price):
+        if new_price < 0 or new_price > 15000:
+            raise ValueError(f"{new_price} is out of range")
+        self._check_model_number(model_number)
+        return self.inventory[model_number].set_price(new_price)
 
     def get_department_inventory(self, department):
         self._check_department(department)
