@@ -9,7 +9,7 @@ class Inventory:
         self.electronics = {}
         self.department_inventory = {'guitar': self.guitar, 'bass': self.bass,
                                 'drums': self.drums, 'electronics': self.electronics}
-        self.inventory = self._build_inventory(pd.read_csv('instrument data.csv'))
+        self.inventory = self._build_inventory(pd.read_csv('instrument_data.csv'))
 
     def get_instrument(self, model_number):
         self._check_model_number(model_number)
@@ -23,17 +23,17 @@ class Inventory:
         self.inventory[instrument.get_model_number()] = instrument
         self.department_inventory[instrument.get_category()][instrument.get_model_number()] = instrument
 
-    def get_quantity(self, model_number):
+    def get_stock(self, model_number):
         self._check_model_number(model_number)
-        return self.inventory[model_number].get_quantity()
+        return self.inventory[model_number].get_stock()
 
-    def set_quantity(self, model_number, new_quantity):
+    def set_stock(self, model_number, new_stock):
         self._check_model_number(model_number)
-        if type(new_quantity) != int:
+        if type(new_stock) != int:
             raise ValueError("new_quantity needs to be an int")
-        if new_quantity < 0 or new_quantity > 500:
-            raise ValueError(f"{new_quantity} is out of range")
-        self.inventory[model_number].set_quantity(new_quantity)
+        if new_stock < 0 or new_stock > 500:
+            raise ValueError(f"{new_stock} is out of range")
+        self.inventory[model_number].set_stock(new_stock)
 
     def get_price(self, model_number):
         self._check_model_number(model_number)

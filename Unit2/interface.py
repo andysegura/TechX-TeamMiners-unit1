@@ -1,4 +1,5 @@
 import inventory as inv
+from item import *
 
 class Employee_Interface:
     def __init__(self, inventory):
@@ -10,11 +11,9 @@ class Employee_Interface:
 
     def welcome_screen(self):
         print("--Employee Interface--")
-        password = input("enter password: ")
-        print("Enter command: ")
         print("-x to exit")
         print("-c for list of commands")
-        command = input().lower()
+        command = input("Enter command: ").lower()
         while command not in self.welcome_commands:
             command = input("command not recognized, try again").lower()
         while(self.welcome_command_options(command)):
@@ -37,8 +36,7 @@ class Employee_Interface:
         elif command == 'add':
             self.add_new_item()
         elif command == 'check department':
-            department_inventory = self.get_department_inventory()
-            self.print_department_inventory(department_inventory)
+            self.print_department_inventory()
         else:
             print("command not recognized, try again")
         return True
@@ -56,40 +54,39 @@ class Employee_Interface:
         print("--check inventory--")
         print(self.get_instrument())
 
-    def print_department_inventory(self, department_inventory):
-        for instrument in department_inventory:
-            print(department_inventory[instrument])
+    def print_department_inventory(self):
+        print("--print department inventory--")
+        department = input("enter department: ")
+        self.inventory.print_department_inventory(department)
 
     def change_inventory(self):
-        instrument = self.get_instrument()
-        new_amount = input("enter new inventory amount: ")
-        instrument.set_quantity(int(new_amount))
+        self._ask_to_print_department_inventory()
+        model_number = input("enter model number: ")
+        new_stock = int(input("enter new inventory amount: "))
+        self.inventory.set_stock(model_number, new_stock)
 
     def change_price(self):
-        instrument = self.get_instrument()
-        new_price = input("enter new price: ")
-        instrument.set_price(new_price)
+        self._ask_to_print_department_inventory()
+        model_number = input("enter model number")
+        new_price = float(input("enter new price: "))
+        self.inventory.set_price(model_number, new_price)
 
     def add_new_item(self):
         print('--add new item --')
         category = input("enter category: ").lower()
         name = input("enter name: ")
         price = float(input("enter price: "))
-        serial = input("enter serial: ").lower()
-        quantity = int(input("enter quantity: "))
+        model = input("enter model: ").lower()
+        stock = int(input("enter quantity: "))
         description = input("enter description: ")
-        instrument = test.Item([category, name, price, serial, quantity, description])
-        self.inventory.data.loc[-1] = instrument.data
-        print(self.inventory.data)
-        self.inventory.add_new_item(instrument)
+        instrument = Item(name, price, model, stock, description, category)
+        self.inventory.add_instrument(instrument)
 
     def get_instrument(self):
-        department_inventory = self.get_department_inventory()
-        print("current stock:")
-        self.print_department_inventory(department_inventory)
-        instrument_name = input("enter instrument name: ")
-        return self.inventory.get_instrument(department_inventory, instrument_name)
+        model_number = input("enter model number: ")
+        return self.inventory.get_instrument(model_number)
 
-    def get_department_inventory(self):
-        command = input("enter instrument category: ").lower()
-        return self.inventory.get_department_inventory(command)
+    def _ask_to_print_department_inventory(self):
+        answer = input("--print out department inventory(Y/N)?").lower()
+        if answer == 'y':
+            self.print_department_inventory()
