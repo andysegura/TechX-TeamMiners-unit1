@@ -1,71 +1,78 @@
 import pandas as pd
-from collections import defaultdict
+from item import *
 
 class Inventory:
     def __init__(self):
-        self.guitar = defaultdict()
-        self.bass = defaultdict()
-        self.drums = defaultdict()
-        self.electronics = defaultdict()
-        self.data = pd.read_csv("instrument data.csv")
-        self.stock_inventory()
+        self.guitar = {}
+        self.bass = {}
+        self.drums = {}
+        self.electronics = {}
+        self.department_inventory = {'guitar': self.guitar, 'bass': self.bass,
+                                'drums': self.drums, 'electronics': self.electronics}
+        self.inventory = self._build_inventory(pd.read_csv('instrument_data.csv'))
 
-    def add_new_item(self, instrument):
-        dictionary = self.instrument_list(instrument.type)
-        dictionary[instrument.name] = instrument
+    def get_instrument(self, model_number):
+        self._check_model_number(model_number)
+        return self.inventory[model_number]
 
-    def update_quantity(self, category, name, quantity):
-        dictionary = self.instrument_list(category)
-        if name not in dictionary:
-            raise ValueError("name not in inventory")
-        if quantity > dictionary[name].quantity or quantity < (dictionary[name].quantity * -1):
-            raise ValueError("invalid quantity change")
-        dictionary[name].quantity += quantity
+    def add_instrument(self, instrument):
+        if type(instrument) != Item:
+            raise TypeError("instrument has to be of class Item")
+        if instrument.get_model_number() in self.inventory:
+            raise ValueError(f"{instrument.get_model_number()} already in inventory")
+        self.inventory[instrument.get_model_number()] = instrument
+        self.department_inventory[instrument.get_category()][instrument.get_model_number()] = instrument
 
-    def change_price(self, name, category, new_price):
-        dictionary = self.instrument_list(category)
-        if name not in dictionary:
-            raise ValueError("name not in inventory")
+    def get_stock(self, model_number):
+        self._check_model_number(model_number)
+        return self.inventory[model_number].get_stock()
+
+    def set_stock(self, model_number, new_stock):
+        self._check_model_number(model_number)
+        if type(new_stock) != int:
+            raise ValueError("new_quantity needs to be an int")
+        if new_stock < 0 or new_stock > 500:
+            raise ValueError(f"{new_stock} is out of range")
+        self.inventory[model_number].set_stock(new_stock)
+
+    def get_price(self, model_number):
+        self._check_model_number(model_number)
+        return self.inventory[model_number].get_price()
+
+    def set_price(self, model_number, new_price):
         if new_price < 0 or new_price > 15000:
-            raise ValueError("invalid price")
-        dictionary[name].price = new_price
+            raise ValueError(f"{new_price} is out of range")
+        self._check_model_number(model_number)
+        return self.inventory[model_number].set_price(new_price)
 
-    def check_inventory(self, category, name):
-        dictionary = self.instrument_list(category)
-        if name not in dictionary:
-            raise ValueError("name not in inventory")
-        return dictionary[name].quantity
+    def get_department_inventory(self, department):
+        self._check_department(department)
+        return self.department_inventory[department]
 
-    def stock_inventory(self):
-        for row in range(self.data.shape[0]):
-            item_data = []
-            for column in range(6):
-                item_data.append(self.data.iloc[row][column])
-            new_item = Item(item_data)
-            dictionary = self.instrument_list(new_item.get_type())
-            dictionary[new_item.get_name()] = new_item
+    def print_department_inventory(self, department):
+        self._check_department(department)
+        for item in self.department_inventory[department]:
+            print(self.department_inventory[department][item])
 
-    def instrument_list(self, category):
-        if category not in ['guitar', 'bass', 'drums', 'electronics']:
-            raise TypeError("no inventory items of that type")
-        if category == 'guitar':
-            return self.guitar
-        elif category == 'bass':
-            return self.bass
-        elif category == 'drums':
-            return self.drums
-        elif category == 'electronics':
-            return self.electronics
+    def _check_model_number(self, model_number):
+        if type(model_number) != str:
+            raise TypeError("model_number has to be a string")
+        if model_number not in self.inventory:
+            raise ValueError(f"{model_number} is not in the inventory")
 
-class Item:
-    def __init__(self, data):
-        self.type = data[0]
-        self.name = data[1]
-        self.price = 100
-    def get_name(self):
-        return self.name
-    def get_type(self):
-        return self.type
+    def _check_department(self, department):
+        if type(department) != str:
+            raise TypeError("department has to be a string")
+        if department not in self.department_inventory:
+            raise ValueError("department not in inventory")
 
-
-
+    def _build_inventory(self, csv_df):
+        inventory = {}
+        for i in csv_df.index:
+            if csv_df['Category'][i] not in self.department_inventory:
+                raise ValueError(f'The category {csv_df["Category"][i]} is not valid')
+            instrument = Item(csv_df['Name'][i], csv_df['Price'][i], csv_df['Model'][i], csv_df['Stock'][i],
+                                 csv_df['Description'][i], csv_df['Category'][i])
+            self.department_inventory[csv_df['Category'][i]][csv_df['Model'][i]] = instrument
+            inventory[csv_df['Model'][i]] = instrument
+        return inventory

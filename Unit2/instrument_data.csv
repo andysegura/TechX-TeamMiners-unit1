@@ -1,10 +1,10 @@
-﻿Category,Name,Price,Serial,Stock,Description
-guitar,Gibson Les Paul Standard,$500.00 ,10001,5,abc
-guitar,Fender Stratocaster,$250.00 ,10010,10,abc
-guitar,Mariposa Custom,$499.99 ,10011,7,abc
-bass,Ibanez Acoustic Electric,$300 ,10100,2,abc
-bass,Rogue Left-Handed,$120 ,10101,20,abc
-drums,yamaha stage custom,$320 ,10110,3,abc
-drums,peace drum set,$250 ,10111,1,abc
-electronics,Sunn Solarus Head,$250 ,11000,5,abc
-electronics,empress tape delay,$220 ,11001,4,abc
+﻿Category,Name,Price,Model,Stock,Description
+guitar,Gibson Les Paul Standard,$500.00 ,10001a,5,abc
+guitar,Fender Stratocaster,$250.00 ,10010a,10,abc
+guitar,Mariposa Custom,$499.99 ,10011a,7,abc
+bass,Ibanez Acoustic Electric,$300 ,10100a,2,abc
+bass,Rogue Left-Handed,$120 ,10101a,20,abc
+drums,yamaha stage custom,$320 ,10110a,3,abc
+drums,peace drum set,$250 ,10111a,1,abc
+electronics,Sunn Solarus Head,$250 ,11000a,5,abc
+electronics,empress tape delay,$220 ,11001a,4,abc
