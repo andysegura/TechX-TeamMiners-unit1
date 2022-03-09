@@ -112,7 +112,14 @@ class Shopping_Cart:
             # update the stock in the inventory 
             item.set_stock(item.get_stock() - val)
         self.cart_total -= amount
+        print('Here is your reciept: ')
+        print(str(self))
         return True # succesfully checked out!
 
     def __str__(self):
-        pass
+        result = 'Miners Music Shop Invoice:\nProduct\t\tModel Number\t\tPrice\t\tQuantity\n'
+        for item, val in self.cart:
+            result += item.get_name() +'\t\t' + item.get_model_number() + '\t\t' + str(item.get_price()) + '\t\t' + str(val) + '\n'
+
+        result += 'Amount Due: ' + str(self.cart_total)
+        return result
