@@ -32,6 +32,7 @@ class Item:
     def set_cetegory(self, x):
         self.category = x
     def update_stock(self):
+        # todo
         raise NotImplementedError()
 
     def __str__(self):
