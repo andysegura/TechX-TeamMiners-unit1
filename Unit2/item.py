@@ -29,8 +29,12 @@ class Item:
         self.stock = x
     def set_description(self, x):
         self.description = x
-    def set_cetegory(self, x):
+    def set_category(self, x):
         self.category = x
+    def update_stock(self):
+        # todo
+        raise NotImplementedError()
 
     def __str__(self):
-        return str(self.name) + ": " + str(self.model_number) + ": quantity = " + str(self.stock)
+        return "name: " + str(self.name) + ": " + str(self.model_number) + ": quantity = " + str(self.stock) +\
+               "cost: " + str(self.price)
