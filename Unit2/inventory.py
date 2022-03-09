@@ -64,7 +64,7 @@ class Inventory:
         if type(department) != str:
             raise TypeError("department has to be a string")
         if department not in self.department_inventory:
-            raise ValueError("department not in inventory")
+            raise ValueError(f"{department} not a department in inventory")
 
     def _build_inventory(self, csv_df):
         inventory = {}

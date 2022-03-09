@@ -67,7 +67,7 @@ class Employee_Interface:
 
     def change_price(self):
         self._ask_to_print_department_inventory()
-        model_number = input("enter model number")
+        model_number = input("enter model number: ")
         new_price = float(input("enter new price: "))
         self.inventory.set_price(model_number, new_price)
 
