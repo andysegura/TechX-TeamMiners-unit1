@@ -1,6 +1,6 @@
 from item import *
 from collections import defaultdict
-from inventory import Inventory
+from inventory import Inventory as Inv
 class Shopping_Cart:
     """
     A class to represent a user's shopping cart.
@@ -110,7 +110,7 @@ class Shopping_Cart:
             raise ValueError(f'${amount:.2f} is greater than the amount you owe, ${self.cart_total:.2f}!')
         if amount < self.cart_total:
             raise ValueError(f'${amount:.2f} is less than the amount you owe, ${self.cart_total:.2f}!')
-        for item, val in self.cart:
+        for item, val in self.cart.items():
             # update the stock in the inventory 
             item.set_stock(item.get_stock() - val)
         self.cart_total -= amount
@@ -120,8 +120,28 @@ class Shopping_Cart:
 
     def __str__(self):
         result = 'Miners Music Shop Invoice:\nProduct\t\tModel Number\t\tPrice\t\tQuantity\n'
-        for item, val in self.cart:
+        for item, val in self.cart.items():
             result += item.get_name() +'\t\t' + item.get_model_number() + '\t\t' + str(item.get_price()) + '\t\t' + str(val) + '\n'
 
         result += 'Amount Due: ' + str(self.cart_total)
         return result
+
+inventory1 = Inv()
+inventory2 = Inv()
+inventory3 = Inv()
+try:
+    cart1 = Shopping_Cart(inventory1)
+except:
+    raise TypeError("Shopping_Cart class needs to be initiated with an inventory object")
+cart2 = Shopping_Cart(inventory2)
+cart3 = Shopping_Cart(inventory3)
+instrument1 = cart1.store_inventory.get_instrument('10011a') #mariposa custom
+instrument2 = cart2.store_inventory.get_instrument('10001a') #gibson standard
+instrument3 = cart2.store_inventory.get_instrument('10011a') #mariposa custom
+instrument4 = cart3.store_inventory.get_instrument('11000a') #Sunn Solarus 250.99
+instrument5 = cart3.store_inventory.get_instrument('11001a') #Empress Delay 220.33
+
+model1 = instrument4.model_number
+model2 = instrument5.model_number
+cart3.add_item(model1)
+cart3.add_item(model2)
