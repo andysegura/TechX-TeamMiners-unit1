@@ -125,23 +125,3 @@ class Shopping_Cart:
 
         result += 'Amount Due: ' + str(self.cart_total)
         return result
-
-inventory1 = Inv()
-inventory2 = Inv()
-inventory3 = Inv()
-try:
-    cart1 = Shopping_Cart(inventory1)
-except:
-    raise TypeError("Shopping_Cart class needs to be initiated with an inventory object")
-cart2 = Shopping_Cart(inventory2)
-cart3 = Shopping_Cart(inventory3)
-instrument1 = cart1.store_inventory.get_instrument('10011a') #mariposa custom
-instrument2 = cart2.store_inventory.get_instrument('10001a') #gibson standard
-instrument3 = cart2.store_inventory.get_instrument('10011a') #mariposa custom
-instrument4 = cart3.store_inventory.get_instrument('11000a') #Sunn Solarus 250.99
-instrument5 = cart3.store_inventory.get_instrument('11001a') #Empress Delay 220.33
-
-model1 = instrument4.model_number
-model2 = instrument5.model_number
-cart3.add_item(model1)
-cart3.add_item(model2)
