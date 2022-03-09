@@ -4,6 +4,26 @@ from inventory import Inventory as Inv
 from collections import defaultdict
 
 class TestCart(unittest.TestCase):
+    """
+    used to test the Shopping_Cart class
+    Methods
+    -------
+
+    setUp()
+        initializes objects to be used later in the code.
+
+    test00_init()
+        tests the initialize method of the Shopping_Cart class.
+
+    test01_add_cart()
+    tests add_cart method in the Shopping_Cart class.
+
+    test02_remove_item()
+    tests remove_item method in the Shopping_Cart class.
+
+    test03_checkout()
+    tests checkout method in the Shopping_Cart class.
+    """
     def setUp(self):
         inventory1 = Inv()
         inventory2 = Inv()
