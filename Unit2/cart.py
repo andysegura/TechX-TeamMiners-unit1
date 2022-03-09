@@ -58,6 +58,7 @@ class Shopping_Cart:
             raise ValueError(f'{item.get_name} does not have enough stock to purchase one!')
         self.cart[item] += 1
         self.cart_total += item.get_price()
+        self.cart_total = round(self.cart_total, 2)
         return True # successfully added item!!
 
     # remove an item from shopping cart
@@ -85,6 +86,7 @@ class Shopping_Cart:
         else:
             self.cart[item] -= 1
         self.cart_total -= item.get_price()
+        self.cart_total = round(self.cart_total, 2)
         return True # successfully removed item!
     # checkout
     def checkout(self, amount):
