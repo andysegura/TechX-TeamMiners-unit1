@@ -106,6 +106,7 @@ class Shopping_Cart:
             Returns True if checkout was successful
         """
         # must be exact change!
+        self.cart_total = round(self.cart_total, 2)
         if amount > self.cart_total:
             raise ValueError(f'${amount:.2f} is greater than the amount you owe, ${self.cart_total:.2f}!')
         if amount < self.cart_total:

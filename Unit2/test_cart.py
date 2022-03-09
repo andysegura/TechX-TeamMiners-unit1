@@ -49,7 +49,3 @@ class TestCart(unittest.TestCase):
         self.assertTrue(self.cart3.checkout(691.65))
         self.assertRaises(ValueError, self.cart3.checkout, 59.99)
         self.assertRaises(ValueError, self.cart3.checkout, 899.99)
-
-
-
-
