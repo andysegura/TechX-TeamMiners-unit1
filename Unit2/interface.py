@@ -76,10 +76,10 @@ class Employee_Interface:
         category = input("enter category: ").lower()
         name = input("enter name: ")
         price = float(input("enter price: "))
-        model = input("enter model: ").lower()
+        model_number = input("enter model: ").lower()
         stock = int(input("enter quantity: "))
         description = input("enter description: ")
-        instrument = Item(name, price, model, stock, description, category)
+        instrument = Item(category, name, price, model_number, stock, description)
         self.inventory.add_instrument(instrument)
 
     def get_instrument(self):
