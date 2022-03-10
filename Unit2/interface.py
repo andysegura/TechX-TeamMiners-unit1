@@ -47,7 +47,7 @@ class Employee_Interface:
         print("change price = change price of an instrument")
         print("check department = print departments inventory")
         print("add = create a new inventory item")
-        print("-x = exit employee interface")
+        print("-x = exit store")
         print("-c = print commands")
 
     def check_inventory(self):

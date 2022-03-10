@@ -1,10 +1,11 @@
 import unittest
 from item import *
+import numpy as np
 
 class TestItem(unittest.TestCase):
     def setUp(self):
-        self.item1 = Item('guitar','Gibson Les Paul Standard',500.00 ,'10001a',5,'abc')
-        self.item2 = Item('bass','Ibanez Acoustic Electric',300.10 ,'10100a',2,'abc')
+        self.item1 = Item('guitar','Gibson Les Paul Standard',np.float64(500.00) ,'10001a',np.int64(5),'abc')
+        self.item2 = Item('bass','Ibanez Acoustic Electric',np.float64(300.10) ,'10100a', np.int64(2),'abc')
     def test00_init(self):
         # make sure that everything was correct
         self.assertEqual(self.item1.get_name(), 'Gibson Les Paul Standard')
@@ -19,5 +20,5 @@ class TestItem(unittest.TestCase):
 
     def test03_set_price(self):
         self.assertRaises(TypeError, self.item2.set_price, "string")
-        self.item2.set_price(200)
+        self.item2.set_price(np.float64(200))
         self.assertEqual(self.item2.get_price(), 200)
