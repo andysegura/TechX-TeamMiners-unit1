@@ -113,7 +113,7 @@ class Shopping_Cart:
             raise ValueError(f'${amount:.2f} is less than the amount you owe, ${self.cart_total:.2f}!')
         for item, val in self.cart.items():
             # update the stock in the inventory 
-            item.set_stock(item.get_stock() - val)
+            item.update_stock(-1 * val)
         self.cart_total -= amount
         print('Here is your reciept: ')
         print(str(self))
