@@ -18,7 +18,7 @@ class Customer_Interface:
         while command not in self.welcome_commands:
             command = input("command not recognized, try again").lower()
         while(self.welcome_command_options(command)):
-            print("--Employee Interface--")
+            print("\n--Cutomer Interface--\n")
             print("-c for list of commands")
             command = input('enter command: ').lower()
 
@@ -59,7 +59,7 @@ class Customer_Interface:
         else:
             print('command not recongnized, try again')
         return True
-    def view(self):
+    def view_inventory(self):
         for department in self.inventory_categories:
             self.inventory.print_department_inventory(department)
     def view_guitars(self):
@@ -78,5 +78,5 @@ class Customer_Interface:
     def checkout(self):
         print('Here is your cart')
         print(self.cart)
-        amount = input('Enter the amount to pay.  Exact change only!')
-        self.cart.checkout(amount)
+        amount = input('Enter the amount to pay.  Exact change only! $')
+        self.cart.checkout(float(amount))
