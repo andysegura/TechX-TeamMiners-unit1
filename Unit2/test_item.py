@@ -3,12 +3,12 @@ from item import *
 
 class TestItem(unittest.TestCase):
     def setUp(self):
-        self.item1 = Item('Gibson Les Paul Standard',500.00 ,'10001a',5,'abc', 'guitar')
-        self.item2 = Item('Ibanez Acoustic Electric',300.10 ,'10100a',2,'abc', 'bass')
+        self.item1 = Item('guitar','Gibson Les Paul Standard',500.00 ,'10001a',5,'abc')
+        self.item2 = Item('bass','Ibanez Acoustic Electric',300.10 ,'10100a',2,'abc')
     def test00_init(self):
         # make sure that everything was correct
-        self.assertEqual(self.item1.get_name(), 'Gibson Les Paul Standard', '$100', '10001a')
-        self.assertEqual(self.item2.get_price(), 500.00)
+        self.assertEqual(self.item1.get_name(), 'Gibson Les Paul Standard')
+        self.assertEqual(self.item1.get_price(), 500.00)
 
     def test01_update_stock(self):
         self.item1.update_stock(2)

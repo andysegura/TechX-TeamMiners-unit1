@@ -1,16 +1,16 @@
 import numpy as np
 class Item:
-    def __init__(self, name, price, model_number, stock, description, category):
+    def __init__(self, category, name, price, model_number, stock, description):
         if type(name) not in [str]:
             raise TypeError("Invalid name")
-        if type(price) not in [np.float64]:
+        if type(price) not in [int,float,np.float64]:
             raise TypeError("The entered price should be a valid price")
         if price <= 0:
             raise ValueError("The price cannot be equal or less than zero")
         if type(model_number) not in [str]:
             raise TypeError("The entered name should be a valid name")
-        if type(stock) not in [str]:
-            raise TypeError("The entered name should be a valid name")
+        if type(stock) not in [int, float]:
+            raise TypeError("The entered quantity should be a valid number")
         if stock <= 0:
             raise ValueError("The quantity cannot be equal or less than zero")
         if type(description) not in [str]:
@@ -42,7 +42,7 @@ class Item:
             raise TypeError("The entered name should be a valid name")
         self.name = x
     def set_price(self, x):
-        if type(x) not in [float]:
+        if type(x) not in [int, float, np.float64]:
             raise TypeError("The entered price should be a valid number")
         if x <= 0:
             raise ValueError("The price cannot be equal or less than zero")
@@ -66,12 +66,9 @@ class Item:
             raise TypeError("The entered category should be a valid category")
         self.category = x
     def update_stock(self, val):
-        if type(val) not in [int, float]:
+        if type(val) not in [int]:
             raise TypeError("The new value for stock should be a valid quantity")
-        if val <= 0:
-            raise ValueError("The new value for stock should be bigger than zero")
         self.stock += val
 
     def __str__(self):
-        return "name: " + str(self.name) + ": " + str(self.model_number) + ": quantity = " + str(self.stock) +\
-               "cost: " + str(self.price)
+        return "name: " + str(self.name) + ": " + str(self.model_number) + ": quantity = " + str(self.stock) + "cost: " + str(self.price)

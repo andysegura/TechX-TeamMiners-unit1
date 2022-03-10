@@ -193,8 +193,7 @@ class Inventory:
         for i in csv_df.index:
             if csv_df['Category'][i] not in self.department_inventory:
                 raise ValueError(f'The category {csv_df["Category"][i]} is not valid')
-            instrument = Item(csv_df['Name'][i], csv_df['Price'][i], csv_df['Model'][i], csv_df['Stock'][i],
-                                 csv_df['Description'][i], csv_df['Category'][i])
+            instrument = Item(csv_df['Category'][i], csv_df['Name'][i], csv_df['Price'][i], csv_df['Model'][i], csv_df['Stock'][i], csv_df['Description'][i])
             self.department_inventory[csv_df['Category'][i]][csv_df['Model'][i]] = instrument
             inventory[csv_df['Model'][i]] = instrument
         return inventory
