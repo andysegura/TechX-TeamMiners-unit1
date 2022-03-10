@@ -54,7 +54,7 @@ class Item:
     def set_stock(self, x):
         if x <= 0:
             raise ValueError("The quantity cannot be equal or less than zero")
-        if type(x) not in [np.int64]:
+        if type(x) not in [np.int64,int]:
             raise TypeError("Must be a valid quanitity")
         self.stock = x
     def set_description(self, x):
