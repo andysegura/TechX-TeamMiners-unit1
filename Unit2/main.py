@@ -12,7 +12,6 @@ def main():
         Customer_Interface(current_inventory)
     else:
         interface.Employee_Interface(current_inventory)
-    interface.Employee_Interface(current_inventory)
     print("thank you come again")
 
 if __name__ == "__main__":
