@@ -9,7 +9,7 @@ class Item:
             raise ValueError("The price cannot be equal or less than zero")
         if type(model_number) not in [str]:
             raise TypeError("The entered model number should be a valid name")
-        if type(stock) not in [np.int64, np.float64]:
+        if type(stock) not in [np.int64, np.float64, int]:
             raise TypeError("The entered quantity should be a valid number")
         if stock <= 0:
             raise ValueError("The quantity cannot be equal or less than zero")
@@ -54,7 +54,7 @@ class Item:
     def set_stock(self, x):
         if x <= 0:
             raise ValueError("The quantity cannot be equal or less than zero")
-        if type(x) not in [np.int64,int]:
+        if type(x) not in [int, np.float64]:
             raise TypeError("Must be a valid quanitity")
         self.stock = x
     def set_description(self, x):
@@ -71,4 +71,8 @@ class Item:
         self.stock += val
 
     def __str__(self):
-        return "name: " + str(self.name) + ": " + str(self.model_number) + ": quantity = " + str(self.stock) + "cost: " + str(self.price)
+        string = "name = " + self.name + " : "
+        string += "model_number = " + str(self.model_number) + " : "
+        string += "stock = " + str(self.stock) + " : "
+        string += "price = " + str(self.price)
+        return string
