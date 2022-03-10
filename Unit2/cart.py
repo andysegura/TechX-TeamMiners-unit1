@@ -117,6 +117,7 @@ class Shopping_Cart:
         self.cart_total -= amount
         print('Here is your reciept: ')
         print(str(self))
+        self.cart.clear()
         return True # succesfully checked out!
 
     def __str__(self):
