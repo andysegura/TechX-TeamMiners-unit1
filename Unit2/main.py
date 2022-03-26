@@ -1,4 +1,5 @@
 import interface
+from customer import *
 import inventory
 
 def main():
@@ -8,7 +9,7 @@ def main():
     while which_interface not in ['customer', 'employee', 'c', 'e']:
         which_interface = input("command not recognized enter customer or employee").lower()
     if which_interface == 'customer' or which_interface == 'c':
-        pass
+        Customer_Interface(current_inventory)
     else:
         interface.Employee_Interface(current_inventory)
     print("thank you come again")
