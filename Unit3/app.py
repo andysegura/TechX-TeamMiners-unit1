@@ -9,10 +9,10 @@ from flask_pymongo import PyMongo
 app = Flask(__name__)
 
 # name of database
-app.config['MONGO_DBNAME'] = 'database'
+app.config['MONGO_DBNAME'] = 'miners_music'
 
 # URI of database
-app.config['MONGO_URI'] = "<mongo_uri_here>"
+app.config['MONGO_URI'] = "mongodb+srv://admin:3sAW1DQEaqpfDtqz@cluster0.ma4v1.mongodb.net/lab9database?retryWrites=true&w=majority"
 
 #Initialize PyMongo
 mongo = PyMongo(app)
@@ -32,10 +32,10 @@ def department_view(department):
     instruments = collection.find({'department.html': department})
     return render_template('department.html', instruments = instruments)
 
-@app.route('/<instrument_name>')
-def instrument_view(instrument_name):
+@app.route('/<model_number>')
+def instrument_view(model_number):
     collection = mongo.db.music_store
-    instrument = collection.find({'name': instrument_name})
+    instrument = collection.find({'model_number': model_number})
     return render_template('instrument.html', instrument = instrument)
 
 @app.route('/shopping_cart')
