@@ -28,19 +28,22 @@ inv = db.inventory
 @app.route('/')
 @app.route('/index')
 def index():
-    return str(inv.find_one({}))
-    #return render_template('index.html')
+    return render_template('index.html')
 
 @app.route('/<department>')
 def department_view(department):
     collection = mongo.db.inventory
-    instruments = collection.find({'department.html': department})
+    instruments = collection.find({'category': department})
     return render_template('department.html', instruments = instruments)
 
-@app.route('/<model_number>')
-def instrument_view(model_number):
-    collection = mongo.db.inventory
-    instrument = collection.find({'model_number': model_number})
+@app.route('/<department>/<model_number>')
+def instrument_view(department, model_number):
+    collection = db.inventory
+    instrument = collection.find_one({'model_number': str(model_number)})
+    if not instrument:
+        return 'invalid page id'
+    if instrument['category'] != department:
+        return f"{model_number} not in this department"
     return render_template('instrument.html', instrument = instrument)
 
 @app.route('/shopping_cart')
