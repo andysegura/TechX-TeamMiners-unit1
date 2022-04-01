@@ -1,0 +1,22 @@
+.description {
+    background-color: aliceblue;
+    border-color: black;
+    width: 50%;
+    margin-left: 23%;
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.price {
+    background-color: white;
+    border: black;
+    width: 5%;
+    margin-left: 48%;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+img {
+    border: black solid;
+    margin-left: 35%;
+}

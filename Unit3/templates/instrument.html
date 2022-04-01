@@ -3,6 +3,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="../static/home.css">
+        <link rel="stylesheet" href="../static/instrument.css">
         <title>{{instrument['name']}}</title>
     </head>
     <body>
@@ -16,15 +17,17 @@
         </ul>
 
       <h1>{{instrument['name']}}</h1>
-      <h3>{{instrument['price']}}</h3>
-      <div class="book-list">
-        <ul>
+      <h3 class="price">{{instrument['price']}}</h3>
+      <img src={{instrument['img_path']}} alt="{{instrument['name']}}" width="30%" height="30%">
+      <div>
+        <ul class="description">
             {{instrument['description'][0]}} <br>
             {{instrument['description'][1]}} <br>
             {{instrument['description'][2]}} <br>
         </ul>
-        <img src={{instrument['img_path']}} alt="drum set" width="30%" height="30%">
+
       </div>
+      
 
     </body>
 </html>
