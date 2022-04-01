@@ -1,0 +1,192 @@
+body {
+    background-color: rgb(2, 9, 85);
+}
+
+.heading {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(37, 188, 215);
+    overflow: hidden;
+}
+
+.pages {
+    float: left;
+    border-right: 1px solid white;
+}
+
+.active {
+    background-color: rgb(0, 184, 9);
+}
+
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px 14px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: rgb(240, 52, 52);
+}
+span {
+    padding-left: 5px;
+}
+ion-icon{
+    padding-right: 5px;
+}
+h1 {
+    font-family: 'New Rocker', cursive;
+    margin-top: 10%;
+    text-align: center;
+    color: rgb(14, 13, 13);
+    background-color: rgb(37, 188, 215);
+    margin-left: 40%;
+    margin-right: 40%;
+    border: rgb(247, 240, 240) solid;
+    border-radius: 10px;
+}
+
+#orange_stack {
+    margin-left: 8%;
+}
+
+.intro_statement {
+    background-color: rgb(101, 85, 160);
+    width: 30%;
+    height: 80%;
+    font-size: x-large;
+    font-family: 'New Rocker', cursive;
+    color: rgb(26, 21, 21);
+    display: inline-block;
+    border: black solid;   
+    vertical-align: 10%;
+    margin-left: 4.5%; 
+    text-align: center;
+    font-style: bold;
+    margin-top: 1%;
+}
+
+.testimonials {
+    background-color: rgb(132, 193, 243);
+    display: inline-block;
+    margin-top: 5%;
+    margin-left: 3%;
+    width: 33%;
+    height: 60%;
+    border: rgb(252, 249, 249) solid 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+}
+
+h2{
+    text-align: center;
+    font-family: 'New Rocker', cursive;
+}
+
+.test_photos {
+    width: 150px;
+    height: 150px;
+    border-radius: 100px;
+    border: black solid;
+    margin-top: 6%;
+    margin-bottom: 5%;
+    margin-left: 25%;
+}
+
+.test_quotes {
+    width: 90%;
+    height: 20%;
+    margin-top: 1%;
+    margin-right: 5%;
+    margin-bottom: 7.5%;
+}
+
+.staffgearpics {
+    display: inline-block;
+    vertical-align: top;
+    width: 55%;
+    height: 15%;
+    background-color: rgb(132, 193, 243);
+    margin-left: 5%;
+    margin-top: 5%;
+    border: rgb(240, 234, 234) solid 5px;
+}
+
+#staff_heading {
+    margin-bottom: 1.5%;
+    
+}
+
+.staff_pics{
+    border: black solid 2px;
+    margin-top: 5%;
+    margin-left: 1.5%;
+    width: 30%;
+    height: 30%;
+}
+
+.pick_names {
+    display: flex;
+    justify-content: space-between;
+}
+
+.pick_names2 {
+    display: flex;
+    justify-content: space-between;
+}
+.gear_name {
+    margin-top: 1%;
+    width: 100%;
+    height: 20%;
+    display: inline-block;
+}
+
+.gear_name2 {
+    margin-top: 1%;
+    width: 40%;
+    height: 20%;
+    display: inline-block;
+}
+
+#col_1 {
+    margin-left: 6%;
+}
+
+#col_2 {
+    margin-left: 15%;
+}
+
+#col_3 {
+    margin-left: 12%;
+}
+
+#col_4 {
+    margin-left: 10%;
+}
+
+#col_5 {
+    margin-left: 5%;
+}
+
+#col_6 {
+    margin-left: 8%;
+}
+
+.sotw {
+    margin-top: 80px;
+    margin-bottom: 50px;
+}
+
+ .spotify {
+     display: block;
+     width: 500px;
+     margin-top: 5px;
+     margin-left: 375px;
+ }
