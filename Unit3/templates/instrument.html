@@ -16,17 +16,20 @@
             <li class="pages"><a href="/shopping_cart"><ion-icon name="cart-outline"></ion-icon>Shopping Cart<span id="num">0</span></a></li>
         </ul>
 
-      <h1>{{instrument['name']}}</h1>
+      <h1 class="instrument_name">{{instrument['name']}}</h1>
       <h3 class="price">{{instrument['price']}}</h3>
-      <img src={{instrument['img_path']}} alt="{{instrument['name']}}" width="30%" height="30%">
-      <div>
-        <ul class="description">
+      <div class = "main">
+      <img src={{instrument['img_path']}} alt="{{instrument['name']}}" class="instrument_image">
+
+      <div class="description">
+        <ul>
             {{instrument['description'][0]}} <br>
             {{instrument['description'][1]}} <br>
             {{instrument['description'][2]}} <br>
         </ul>
 
       </div>
+    </div>
       
 
     </body>

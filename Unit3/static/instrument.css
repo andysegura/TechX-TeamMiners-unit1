@@ -1,10 +1,16 @@
 .description {
     background-color: aliceblue;
-    border-color: black;
-    width: 50%;
-    margin-left: 23%;
+    border-style: solid;
+    border-width: thick;
+    border-color: aquamarine;
+    width: 40%;
+    height: 40%;
     font-size: large;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-left: 10%;
+    display: inline-block;
+    text-align: left;
+  
 }
 
 .price {
@@ -14,9 +20,32 @@
     margin-left: 48%;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
 }
 
-img {
-    border: black solid;
-    margin-left: 35%;
+.instrument_image {
+    border-style: solid;
+    border-width: thick;
+    border-color: aquamarine;
+
+    margin-left: 1%;
+    float: left;
+    width: 30%;
+    height: 30%;
 }
+
+.instrument_name {
+    width: 50%;
+    background-color: white;
+    margin-left: 25%;
+    border-color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+.main { 
+    width:95%;
+    margin-top: 5%;
+    margin-left: 5%;
+}
+
