@@ -1,6 +1,6 @@
 from collections import defaultdict
 import pymongo
-
+import certifi
 # create database
 client = pymongo.MongoClient("mongodb+srv://admin:3sAW1DQEaqpfDtqz@cluster0.ma4v1.mongodb.net/lab9database?retryWrites=true&w=majority", tlsCAFile=certifi.where())
 db = client.miners_music
