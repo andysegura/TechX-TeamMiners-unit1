@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/home.css">
     <link rel="stylesheet" href="../static/cart.css">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <title>Shopping Cart</title>
 </head>
 <body>
@@ -15,7 +17,7 @@
         <li class="pages"><a href="/bass">Bass</a></li>
         <li class="pages"><a href="/drums">Drums</a></li>
         <li class="pages"><a href="/electronics">Electronics</a></li>
-        <li class="pages"><a href="/shopping_cart"><ion-icon name="cart-outline"></ion-icon>Shopping Cart<span id="num">0</span></a></li>
+        <li class="pages"><a href="/shopping_cart"><ion-icon name="cart-outline"></ion-icon>Shopping Cart {{ shopping_cart.count }}</a></li>
     </ul>
 
 
