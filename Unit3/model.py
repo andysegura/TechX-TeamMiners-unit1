@@ -81,6 +81,15 @@ class Shopping_Cart:
         """
         if model_number in self.cart:
             self.cart[model_number] -= 1
+            if self.cart[model_number] == 0:
+                del self.cart[model_number]
         else:
             raise ValueError('The product is not in the cart!')
         return True
+
+
+
+test = Shopping_Cart()
+test.add_item('si887fhf65')
+test.remove_item('si887fhf65')
+print(test.cart)
