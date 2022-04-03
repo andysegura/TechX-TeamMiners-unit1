@@ -15,7 +15,7 @@
             <li class="pages"><a href="/bass">Bass</a></li>
             <li class="pages"><a href="/drums">Drums</a></li>
             <li class="pages"><a href="/electronics">Electronics</a></li>
-            <li class="pages"><a href="/shopping_cart"><ion-icon name="cart-outline"></ion-icon>Shopping Cart {{ shopping_cart.count }}</a></li>
+            <li class="pages"><a href="/shopping_cart"><ion-icon name="cart-outline"></ion-icon>Shopping Cart {{ count }}</a></li>
         </ul>
 
       <h1 class="instrument_name">{{instrument['name']}}</h1>
@@ -31,7 +31,9 @@
         </ul>
 
       </div>
-    </div>
+      <form method="post" action="/add_to_cart/{{instrument['category']}}/{{instrument['model_number']}}">
+        <input type="submit" value="Add to Cart">
+      </form>
       
 
     </body>
