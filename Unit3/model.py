@@ -86,10 +86,3 @@ class Shopping_Cart:
         else:
             raise ValueError('The product is not in the cart!')
         return True
-
-
-
-test = Shopping_Cart()
-test.add_item('si887fhf65')
-test.remove_item('si887fhf65')
-print(test.cart)
