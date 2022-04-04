@@ -17,4 +17,4 @@ class Test_Check_Add(unittest.TestCase):
         # make sure we can't add a model number that isn't in inventory
         self.assertFalse(can_add({}, 'not a valid model'))
         # make sure we can't add more than the stock store has
-        self.assertFalse(can_add({'emp101001': 13}, 'emp101001'))
+        self.assertFalse(can_add({'emp101001': 2}, 'emp101001'))
