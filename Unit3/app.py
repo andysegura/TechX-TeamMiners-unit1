@@ -34,6 +34,17 @@ orders = db.orders
 @app.route('/')
 @app.route('/index')
 def index():
+    """
+    Home page.  Creates shopping cart in cookies if it does not exist currently.
+
+        Parameters
+        ----------
+        None
+
+        Returns
+        -------
+        respons that renders index.html template
+    """
     resp = make_response(render_template('index.html', count = request.cookies.get('count')))
     if 'cart' not in request.cookies:
         resp.set_cookie('cart', json.dumps({}))
@@ -43,11 +54,34 @@ def index():
 
 @app.route('/<department>')
 def department_view(department):
+    """
+    Shows a specific instrument page.  With description, price, and an add to cart button.
+
+        Parameters
+        ----------
+        department: str
+
+        Returns
+        -------
+        redirects to shopping cart on success
+    """
     instruments = inv.find({'category': department})
     return render_template('department.html', instruments = instruments, count = request.cookies.get('count'))
 
 @app.route('/<department>/<model_number>', methods=['GET', 'POST'])
 def instrument_view(department, model_number):
+    """
+    Shows a specific instrument page.  With description, price, and an add to cart button.
+
+        Parameters
+        ----------
+        department: str
+        model_number: str
+
+        Returns
+        -------
+       renders the instrument template taking in the specific instrument
+    """
     if 'cart' not in request.cookies:
         return redirect(url_for('index'))
     instrument = inv.find_one({'model_number': str(model_number)})
@@ -60,6 +94,18 @@ def instrument_view(department, model_number):
 
 @app.route('/shopping_cart')
 def shopping_cart_view():
+    """
+    Shows everything in shopping cart, gets the shopping cart from cookie and converts it to a list of cursors that can be used in 
+    the html template.
+
+        Parameters
+        ----------
+        None
+
+        Returns
+        -------
+        renders template of shopping cart and passes in whats in the shopping cart
+    """
     if 'cart' not in request.cookies:
         return redirect(url_for('index'))
     cart = json.loads(request.cookies.get('cart'))
@@ -70,6 +116,17 @@ def shopping_cart_view():
 
 @app.route('/add_to_cart/<department>/<model_number>',  methods=['GET', 'POST'])
 def add_to_cart(department, model_number):
+    """
+    Adds an item to cart or updates the quantity if the item is already in the cart.
+        Parameters
+        ----------
+        department: str
+        model_number: str
+
+        Returns
+        -------
+        respons that redirects to instrument page
+    """
     if 'cart' not in request.cookies:
         return redirect(url_for('index'))
     cart = json.loads(request.cookies.get('cart'))
@@ -93,6 +150,17 @@ def add_to_cart(department, model_number):
 
 @app.route('/update_cart', methods=['GET', 'POST'])
 def update_cart():
+    """
+        Used to update the quantities of the items in the shopping cart. 
+        If a button is clicked it will update the quantity here either by adding, subtracting or removing.
+
+        Parameters
+        ----------
+        None
+        Returns
+        -------
+        response that redirects back to the shopping cart
+    """
     if 'cart' not in request.cookies:
         return redirect(url_for('index'))
     resp = make_response(redirect(url_for('shopping_cart_view')))
@@ -137,6 +205,16 @@ def update_cart():
 
 @app.route('/checkout', methods=['GET', 'POST'])
 def checkout():
+    """
+    Route to display forms for user to enter in shipping address
+
+        Parameters
+        ----------
+        None
+        Returns
+        -------
+        checkout html template
+    """
     if 'cart' not in request.cookies:
         return redirect(url_for('index'))
     if json.loads(request.cookies.get('cart')) == {}:
@@ -145,6 +223,17 @@ def checkout():
 
 @app.route('/checkout_validate', methods=['GET', 'POST'])
 def checkout_validate():
+    """
+    Checks out by taking all of the request forms and making sure there is still enough stock to checkout the items in the cart.
+    Resets the cart to the initial state.  Adds users order to the database
+
+        Parameters
+        ----------
+        None
+        Returns
+        -------
+        redirects to shopping cart on success else it redirects to checkout again
+    """
     if 'cart' not in request.cookies:
         return redirect(url_for('index'))
     resp = make_response(redirect(url_for('shopping_cart_view')))
