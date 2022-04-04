@@ -24,7 +24,7 @@ def can_add(shopping_cart, model_number):
     """
     item = inv.find_one({'model_number': model_number})
     if not item:
-        raise ValueError('We do not have this item in inventory')
+        return False
     elif (model_number in shopping_cart and item['stock'] < shopping_cart[model_number] + 1) or item['stock'] < 1:
-        raise ValueError('There is not enough stock of this item to complete the transaction')
+        return False
     return True
