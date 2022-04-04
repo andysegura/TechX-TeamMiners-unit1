@@ -84,3 +84,44 @@ def add_to_cart(department, model_number):
     resp.set_cookie('count', str(count + 1))
     resp.set_cookie('total', str(total + instrument['price']))
     return resp
+@app.route('/update_cart', methods=['GET', 'POST'])
+def update_cart():
+    cart = json.loads(request.cookies.get('cart'))
+    count = int(request.cookies.get('count'))
+    total = float(request.cookies.get('total'))
+    if request.method == 'POST':
+        if 'decrease' in request.form:
+            model_number = request.form['decrease']
+            instrument = inv.find_one({'model_number': model_number})
+            if model_number in cart and cart[model_number] > 1:
+                cart[model_number] -= 1
+                count -= 1
+                total -= instrument['price']
+            elif model_number in cart:
+                del cart[model_number]
+                count -= 1
+                total -= instrument['price']
+        elif 'increase' in request.form:
+            model_number = request.form['increase']
+            instrument = inv.find_one({'model_number': model_number})
+            if can_add(cart, model_number):
+                if model_number in cart:
+                    cart[model_number] += 1
+                    count += 1
+                    total += instrument['price']
+                else:
+                    cart[model_number] = 1
+                    count += 1
+                    total += instrument['price']
+        elif 'remove' in request.form:
+            model_number = request.form['remove']
+            instrument = inv.find_one({'model_number': model_number})
+            if model_number in cart:
+                count -= cart[model_number]
+                total -= instrument['price'] * cart[model_number]
+                del cart[model_number]
+        resp = make_response(redirect(url_for('shopping_cart_view')))
+        resp.set_cookie('cart', json.dumps(cart))
+        resp.set_cookie('count', str(count))
+        resp.set_cookie('total', str(total))
+    return resp

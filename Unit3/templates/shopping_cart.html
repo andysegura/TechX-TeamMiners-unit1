@@ -28,34 +28,42 @@
             <h5 class="product-quantity">Quantity</h5>
             <h5 class="product-total">Total</h5>
         </div>
-        <div class = "products" id="shopping-cart-items">
-            {% for instrument, quantity in instruments %}
-                <div class="product">
-                    <ion-icon name="close-circle"></ion-icon>
-                    <a href=""><img = src={{instrument['img_path']}}></a>
-                    <span>{{instrument['name']}}</span>
+        <form method="post" action="/update_cart">
+            <div class = "products" id="shopping-cart-items">
+                {% for instrument, quantity in instruments %}
+                    <div class="product">
+                        <button name="remove" value="{{instrument['model_number']}}">
+                            <ion-icon name="close-circle"></ion-icon>
+                        </button>
+                        <a href=""><img = src={{instrument['img_path']}}></a>
+                        <span>{{instrument['name']}}</span>
 
+                    </div>
+                    <div class="product-price"> ${{instrument['price']}}</div>
+                    <div class="product-quantity">
+                        <button name="decrease" value="{{instrument['model_number']}}">
+                            <ion-icon class="decrease" name="remove-circle-outline"></ion-icon>
+                        </button>
+                        <span>{{quantity}}</span>
+                        <button name="increase" value="{{instrument['model_number']}}">
+                            <ion-icon class="increase" name="add-circle-outline"></ion-icon>
+                        </button>
+                    </div >
+                    <div class="product-total">
+                        <span>${{quantity * instrument['price']}}</span>
+                    </div>
+                {% endfor %}
+                <div class="basketTotalContainer">
+                    <h4 class= "basketTotalTitle">
+                        Basket Total
+                    </h4>
+                    <h4 class="basketTotal">
+                        ${{ total }}
+                    </h4>
                 </div>
-                <div class="product-price"> ${{instrument['price']}}</div>
-                <div class="product-quantity">
-                    <ion-icon class="decrease" name="remove-circle-outline"></ion-icon>
-                    <span>{{quantity}}</span>
-                    <ion-icon class="increase" name="add-circle-outline"></ion-icon>
-                </div >
-                <div class="product-total">
-                    <span>${{quantity * instrument['price']}}</span>
-                </div>
-            {% endfor %}
-            <div class="basketTotalContainer">
-                <h4 class= "basketTotalTitle">
-                    Basket Total
-                </h4>
-                <h4 class="basketTotal">
-                    ${{ total }}
-                </h4>
+
             </div>
-
-        </div>
+        </form>
     </div>
 </body>
 </html>
