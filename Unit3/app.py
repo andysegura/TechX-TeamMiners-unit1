@@ -66,7 +66,7 @@ def department_view(department):
         redirects to shopping cart on success
     """
     instruments = inv.find({'category': department})
-    return render_template('department.html', instruments = instruments, count = request.cookies.get('count'))
+    return render_template('department.html',department = department, instruments = instruments, count = request.cookies.get('count'))
 
 @app.route('/<department>/<model_number>', methods=['GET', 'POST'])
 def instrument_view(department, model_number):

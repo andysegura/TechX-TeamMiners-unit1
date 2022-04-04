@@ -18,16 +18,16 @@
         <li class="pages"><a href="/shopping_cart"><ion-icon name="cart-outline"></ion-icon>Shopping Cart {{ count }} </a></li>
       </ul>
       
-      <h1>department</h1>
+      <h1>{{department}}</h1>
       <div class="instrument-list">
         <ul>
             <div class="row">
                 {% for instrument in instruments %}
                 <a href = "{{instrument['category']}}/{{instrument['model_number']}}">
                     <img class="instrument_pics" src="{{instrument['img_path']}}" alt="{{instrument['name']}}" class="instrument_image">
-                    <h4 class=instrument_name>
+                    <h4 class="instrument_names">
                         {{instrument['name']}}
-                     </h4>
+                    </h4>
                 </a>
                 {% endfor %}
             </div>
