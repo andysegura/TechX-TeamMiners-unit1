@@ -58,7 +58,10 @@ def instrument_view(department, model_number):
 
 @app.route('/shopping_cart')
 def shopping_cart_view():
-    return render_template('shopping_cart.html', count = request.cookies.get('count'))
+    cart = json.loads(request.cookies.get('cart'))
+    total = float(request.cookies.get('total'))
+    instruments = [(inv.find_one({'model_number': str(model_number)}), quantity) for model_number, quantity in cart.items()]
+    return render_template('shopping_cart.html', count = request.cookies.get('count'), instruments = instruments, total = total)
 
 @app.route('/create_cart')
 def create_cart():
@@ -72,6 +75,8 @@ def create_cart():
 def add_to_cart(department, model_number):
     cart = json.loads(request.cookies.get('cart'))
     count = int(request.cookies.get('count'))
+    total = float(request.cookies.get('total'))
+    instrument = inv.find_one({'model_number': model_number})
     if can_add(cart, model_number):
         if model_number in cart:
             cart[model_number] += 1
@@ -80,5 +85,5 @@ def add_to_cart(department, model_number):
     resp = make_response(redirect(url_for('instrument_view', department=department, model_number=model_number)))
     resp.set_cookie('cart', json.dumps(cart))
     resp.set_cookie('count', str(count + 1))
+    resp.set_cookie('total', str(total + instrument['price']))
     return resp
-    return redirect(url_for('instrument_view', department=department, model_number=model_number))
