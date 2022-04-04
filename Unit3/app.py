@@ -1,16 +1,13 @@
 # ---- YOUR APP STARTS HERE ----
 # -- Import section --
-from operator import mod
 from flask import Flask
 from flask import render_template, url_for
-from flask import request, redirect, session
+from flask import request, redirect
 from flask_pymongo import PyMongo
 from flask import make_response
-from model import Shopping_Cart, can_add
-from flask_session import Session
+from model import can_add
 import certifi
 import pymongo
-import secrets
 import json
 # -- Initialization section --
 app = Flask(__name__)
