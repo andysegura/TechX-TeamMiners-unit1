@@ -48,6 +48,8 @@ def department_view(department):
 
 @app.route('/<department>/<model_number>', methods=['GET', 'POST'])
 def instrument_view(department, model_number):
+    if 'cart' not in request.cookies:
+        return redirect(url_for('index'))
     instrument = inv.find_one({'model_number': str(model_number)})
     if not instrument:
         return 'invalid page id'
@@ -58,6 +60,8 @@ def instrument_view(department, model_number):
 
 @app.route('/shopping_cart')
 def shopping_cart_view():
+    if 'cart' not in request.cookies:
+        return redirect(url_for('index'))
     cart = json.loads(request.cookies.get('cart'))
     total = float(request.cookies.get('total'))
     instruments = [(inv.find_one({'model_number': str(model_number)}), quantity) for model_number, quantity in cart.items()]
@@ -66,6 +70,8 @@ def shopping_cart_view():
 
 @app.route('/add_to_cart/<department>/<model_number>',  methods=['GET', 'POST'])
 def add_to_cart(department, model_number):
+    if 'cart' not in request.cookies:
+        return redirect(url_for('index'))
     cart = json.loads(request.cookies.get('cart'))
     count = int(request.cookies.get('count'))
     total = float(request.cookies.get('total'))
@@ -83,6 +89,8 @@ def add_to_cart(department, model_number):
 
 @app.route('/update_cart', methods=['GET', 'POST'])
 def update_cart():
+    if 'cart' not in request.cookies:
+        return redirect(url_for('index'))
     resp = make_response(redirect(url_for('shopping_cart_view')))
     cart = json.loads(request.cookies.get('cart'))
     count = int(request.cookies.get('count'))
@@ -125,10 +133,14 @@ def update_cart():
 
 @app.route('/checkout', methods=['GET', 'POST'])
 def checkout():
+    if 'cart' not in request.cookies:
+        return redirect(url_for('index'))
     return render_template('checkout.html', count = request.cookies.get('count'))
 
 @app.route('/checkout_validate', methods=['GET', 'POST'])
 def checkout_validate():
+    if 'cart' not in request.cookies:
+        return redirect(url_for('index'))
     resp = make_response(redirect(url_for('shopping_cart_view')))
     cart = json.loads(request.cookies.get('cart'))
     count = int(request.cookies.get('count'))
