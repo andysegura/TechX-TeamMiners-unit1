@@ -2,8 +2,9 @@
 
 <html>
     <head>
-        <title>test</title>
+        <title>department</title>
         <link rel="stylesheet" href="../static/home.css">
+        <link rel="stylesheet" href="../static/department.css">
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     </head>
@@ -16,17 +17,21 @@
         <li class="pages"><a href="/electronics">Electronics</a></li>
         <li class="pages"><a href="/shopping_cart"><ion-icon name="cart-outline"></ion-icon>Shopping Cart {{ count }} </a></li>
       </ul>
-      <div class="book-list">
-        
-        
+      
+      <h1>department</h1>
+      <div class="instrument-list">
         <ul>
-            <!--
-          {% for book in books %}
-            <li>{{ book.title }} by {{ book.author }}</li>
-          {% endfor %}
-            -->
+            <div class="row">
+                {% for instrument in instruments %}
+                <a href = "{{instrument['category']}}/{{instrument['model_number']}}">
+                    <img class="instrument_pics" src="{{instrument['img_path']}}" alt="{{instrument['name']}}" class="instrument_image">
+                    <h4 class=instrument_name>
+                        {{instrument['name']}}
+                     </h4>
+                </a>
+                {% endfor %}
+            </div>
         </ul>
-  
       </div>
 
     </body>
