@@ -1,0 +1,29 @@
+.department_name {
+    width: 50%;
+    background-color: white;
+    margin-left: 25%;
+    border-color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+.instrument-list{
+    display: inline-block;
+    vertical-align: top;
+    width: 55%;
+    height: 15%;
+    background-color: rgb(132, 193, 243);
+    margin-left: 5%;
+    margin-top: 5%;
+    border: rgb(240, 234, 234) solid 5px;
+}
+.instrument_names {
+    display: flex;
+}
+.instrument_pics{
+    border: black solid 2px;
+    margin-top: 5%;
+    margin-left: 1.5%;
+    width: 30%;
+    height: 30%;
+}
