@@ -20,7 +20,16 @@
             <li class="pages"><a href="/shopping_cart"><ion-icon name="cart-outline"></ion-icon>Shopping Cart {{ count }} </a></li>
         </ul>
         <form action = '/checkout_validate', method = 'POST'>
-            
+            <h3>Please enter your shipping information then hit purchase!</h3>
+            <input type="text" name='first' placeholder="Enter your first name"/>
+            <input type="text" name='last' placeholder="Enter your last name"/>
+            <input type="text" name='address' placeholder="Enter your address"/>
+            <input type="text" name='city' placeholder="Enter your city"/>
+            <input type="text" name='state' placeholder="Enter your state"/>
+            <button name="purchase" value="checkout">
+                Purchase
+                <ion-icon name="card-outline"></ion-icon>
+            </button>
         </form>
     </body>
 </html>

@@ -143,10 +143,10 @@ def checkout_validate():
         user['order'] = cart
         user['amount_paid'] = total
         user['quantity'] = count
-        db.add(user)
+        orders.insert_one(user)
         for model_number, quantity in cart.items():
             instrument = inv.find_one({'model_number': model_number})
-            inv.update_one({'model_number': model_number}, {'$set': {'stock': instrument['stock'] - count}})
+            inv.update_one({'model_number': model_number}, {'$set': {'stock': instrument['stock'] - quantity}})
         resp.set_cookie('cart', json.dumps({}))
         resp.set_cookie('count', '0')
         resp.set_cookie('total', '0')
