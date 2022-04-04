@@ -139,6 +139,8 @@ def update_cart():
 def checkout():
     if 'cart' not in request.cookies:
         return redirect(url_for('index'))
+    if json.loads(request.cookies.get('cart')) == {}:
+        return redirect(url_for('shopping_cart_view'))
     return render_template('checkout.html', count = request.cookies.get('count'))
 
 @app.route('/checkout_validate', methods=['GET', 'POST'])
@@ -150,6 +152,7 @@ def checkout_validate():
     count = int(request.cookies.get('count'))
     total = float(request.cookies.get('total'))
     if request.method == 'POST':
+        
         user = {}
         user['first'] = request.form['first']
         user['last'] = request.form['last']
@@ -159,6 +162,8 @@ def checkout_validate():
         user['order'] = cart
         user['amount_paid'] = total
         user['quantity'] = count
+        if "" in user.values():
+            return redirect(url_for('checkout'))
         orders.insert_one(user)
         for model_number, quantity in cart.items():
             instrument = inv.find_one({'model_number': model_number})
